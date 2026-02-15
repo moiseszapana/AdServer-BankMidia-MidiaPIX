@@ -23,4 +23,4 @@
 - [x] Criar script update.sh para atualizar do GitHub
 - [x] Adicionar instruções no DOCUMENTACAO_README.md
 - [x] Adicionar instruções no INSTALACAO_CWP.md
-- [ ] Publicar no GitHub
+- [x] Publicar no GitHub
