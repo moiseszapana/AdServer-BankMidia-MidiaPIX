@@ -372,7 +372,7 @@ Para dúvidas ou problemas:
 
 ---
 
-**Versão:** 1.4.0  
-**Data:** 15 de março de 2025  
+**Versão:** 1.5.0  
+**Data:** 13 de fevereiro de 2026  
 **Autor:** moiseszapana (contato@bankmidia.com.br)  
 **Desenvolvido para BankMidia/MidiaPix**

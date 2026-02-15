@@ -372,8 +372,7 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 
 ---
 
-**Versão:** 1.4.0  
-**Data:** 15 de março de 2025  
+**Versão:** 1.5.0  
+**Data:** 13 de fevereiro de 2026  
 **Autor:** moiseszapana (contato@bankmidia.com.br)  
-**Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX  
 **Desenvolvido para BankMidia/MidiaPix**

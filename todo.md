@@ -1,9 +1,11 @@
 # Project TODO
 
-## Adaptação para CWP (Control Web Panel)
+## Atualização da Documentação - Novo Endpoint API
 
-- [x] Configurar servidor Node.js para aceitar porta via variável de ambiente
-- [x] Ajustar package.json com scripts de produção
-- [x] Criar documentação INSTALACAO_CWP.md
-- [x] Testar build de produção
-- [x] Atualizar DOCUMENTACAO_README.md com instruções CWP
+- [x] Adicionar endpoint https://s.bankmidia.com.br/v1/api.php na página API.tsx
+- [x] Atualizar versão para 1.5.0 na API.tsx
+- [x] Atualizar data para 13 de fevereiro de 2026 na API.tsx
+- [x] Atualizar DOCUMENTACAO_README.md
+- [x] Atualizar INSTALACAO_CWP.md
+- [x] Compilar projeto
+- [ ] Publicar no GitHub

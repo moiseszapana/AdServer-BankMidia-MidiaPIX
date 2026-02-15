@@ -48,7 +48,7 @@ export default function API() {
             </tr>
             <tr>
               <td><strong>Data da Atualização</strong></td>
-              <td>15 de março de 2025</td>
+              <td>13 de fevereiro de 2026</td>
             </tr>
           </tbody>
         </table>
@@ -133,6 +133,112 @@ export default function API() {
           <li><strong>GET /marketplace</strong> - Listar sites disponíveis no marketplace</li>
           <li><strong>GET /marketplace/{'{id}'}</strong> - Obter detalhes de um site</li>
         </ul>
+
+        <h3>Entrega de Anúncios (Ad Delivery)</h3>
+        <p>
+          Endpoint para solicitar anúncios em tempo real baseado em zonas e targeting.
+        </p>
+        <ul>
+          <li><strong>POST https://s.bankmidia.com.br/v1/api.php</strong> - Solicitar anúncios para zonas específicas</li>
+        </ul>
+
+        <h4>Exemplo de Requisição - Entrega de Anúncios</h4>
+        <p>
+          Este endpoint permite solicitar anúncios para uma ou mais zonas, com suporte a targeting customizado e palavras-chave.
+        </p>
+
+        <pre><code>{`POST https://s.bankmidia.com.br/v1/api.php
+Content-Type: application/json
+
+{
+  "user": {
+    "id": "your_nickname",
+    "ip": "xxx.xxx.xxx.xxx",
+    "language": "pt-BR",
+    "referer": "https://your-website.com.br/",
+    "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+  },
+  "zones": [
+    {
+      "id": 15,
+      "keywords": "finances, pagamentos",
+      "custom_targeting": {
+        "ex_car-brand": "TOYOTA",
+        "ex_credit-score": "300"
+      }
+    }
+  ]
+}`}</code></pre>
+
+        <h4>Parâmetros do Usuário</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>id</code></td>
+              <td>string</td>
+              <td>Identificador único do usuário ou sessão</td>
+            </tr>
+            <tr>
+              <td><code>ip</code></td>
+              <td>string</td>
+              <td>Endereço IP do usuário</td>
+            </tr>
+            <tr>
+              <td><code>language</code></td>
+              <td>string</td>
+              <td>Idioma preferido do usuário (ex: pt-BR, en-US)</td>
+            </tr>
+            <tr>
+              <td><code>referer</code></td>
+              <td>string</td>
+              <td>URL da página onde o anúncio será exibido</td>
+            </tr>
+            <tr>
+              <td><code>ua</code></td>
+              <td>string</td>
+              <td>User Agent do navegador do usuário</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Parâmetros das Zonas</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>id</code></td>
+              <td>number</td>
+              <td>ID da zona onde o anúncio será exibido</td>
+            </tr>
+            <tr>
+              <td><code>keywords</code></td>
+              <td>string</td>
+              <td>Palavras-chave separadas por vírgula para targeting contextual</td>
+            </tr>
+            <tr>
+              <td><code>custom_targeting</code></td>
+              <td>object</td>
+              <td>Objeto com pares chave-valor para targeting customizado</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          <strong>Nota:</strong> Este endpoint é otimizado para baixa latência e deve ser usado para solicitações de anúncios em tempo real.
+        </p>
 
         <h3>Outros Endpoints</h3>
         <ul>
@@ -433,8 +539,9 @@ Content-Type: application/json`}</code></pre>
         <hr />
 
         <p className="text-sm text-muted-foreground">
-          <strong>Versão da Documentação:</strong> 1.1.0<br />
-          <strong>API Version:</strong> 2.0
+          <strong>Versão da Documentação:</strong> 1.5.0<br />
+          <strong>API Version:</strong> 2.0<br />
+          <strong>Data da Atualização:</strong> 13 de fevereiro de 2026
         </p>
       </article>
     </DocsLayout>
