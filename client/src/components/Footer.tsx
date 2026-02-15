@@ -1,5 +1,5 @@
 import { Github, ExternalLink, Mail } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
 import { getTranslation } from '@/lib/translations';
 
 export default function Footer() {
@@ -8,7 +8,7 @@ export default function Footer() {
   const email = "moiseszapana@bankmidia.com.br";
   const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
   
-  const { language } = useLanguage();
+  const language = useLanguageFromUrl();
   const t = (path: string) => getTranslation(language, path);
 
   return (

@@ -1,11 +1,11 @@
 import { Link } from 'wouter';
 import { ArrowRight, BookOpen, Users, BarChart3 } from 'lucide-react';
 import DocsLayout from '@/components/DocsLayout';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
 import { getTranslation } from '@/lib/translations';
 
 export default function Home() {
-  const { language } = useLanguage();
+  const language = useLanguageFromUrl();
   const t = (path: string) => getTranslation(language, path);
 
   return (

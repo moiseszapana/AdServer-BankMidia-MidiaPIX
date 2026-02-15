@@ -1,3 +1,5 @@
+import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
+import { getTranslation } from '@/lib/translations';
 import DocsLayout from '@/components/DocsLayout';
 
 export default function Anunciantes() {
