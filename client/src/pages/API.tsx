@@ -433,8 +433,7 @@ Content-Type: application/json`}</code></pre>
         <hr />
 
         <p className="text-sm text-muted-foreground">
-          <strong>Versão da Documentação:</strong> 1.0<br />
-          <strong>Data da Atualização:</strong> 15 de março de 2025<br />
+          <strong>Versão da Documentação:</strong> 1.1.0<br />
           <strong>API Version:</strong> 2.0
         </p>
       </article>

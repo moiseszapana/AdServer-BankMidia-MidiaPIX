@@ -391,8 +391,7 @@ export default function APITester() {
         <hr className="my-8" />
 
         <p className="text-sm text-gray-600">
-          <strong>Versão do Testador:</strong> 1.0<br />
-          <strong>Data da Atualização:</strong> 15 de março de 2025<br />
+          <strong>Versão do Testador:</strong> 1.1.0<br />
           <strong>API Version:</strong> 2.0
         </p>
       </article>

@@ -1,8 +1,7 @@
 import { Github, ExternalLink, Mail } from 'lucide-react';
 
 export default function Footer() {
-  const version = "1.0.0";
-  const releaseDate = "15 de março de 2025";
+  const version = "1.1.0";
   const author = "moiseszapana";
   const email = "moiseszapana@gmail.com";
   const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
@@ -70,9 +69,6 @@ export default function Footer() {
           <div className="text-sm text-muted-foreground">
             <p className="mb-2">
               <strong>Versão:</strong> {version}
-            </p>
-            <p>
-              <strong>Data de Lançamento:</strong> {releaseDate}
             </p>
           </div>
 
