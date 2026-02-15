@@ -44,16 +44,12 @@ bankmidia_docs/
 │   │   └── index.html                       # Template HTML
 │   ├── index.html                           # Template HTML principal
 │   └── package.json                         # Dependências do projeto
-├── server/
-│   └── index.ts                             # Servidor Express (placeholder)
-├── shared/
-│   └── const.ts                             # Constantes compartilhadas
 ├── dist/                                    # Arquivos compilados (gerados)
-│   ├── public/                              # Arquivos prontos para Apache
-│   │   ├── index.html
-│   │   ├── assets/                          # CSS e JavaScript compilados
-│   │   └── .htaccess                        # Configuração Apache
-│   └── index.js                             # Servidor compilado
+│   └── public/                              # Arquivos prontos para Apache
+│       ├── index.html
+│       ├── assets/                          # CSS e JavaScript compilados
+│       ├── .htaccess                        # Configuração Apache
+│       └── logo.png                         # Logo MidiaPix
 ├── package.json                             # Dependências e scripts
 ├── tsconfig.json                            # Configuração TypeScript
 ├── vite.config.ts                           # Configuração Vite
