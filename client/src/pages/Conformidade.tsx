@@ -153,7 +153,7 @@ export default function Conformidade() {
 
         <h3>Como Solicitar Acesso aos Seus Dados</h3>
         <p>
-          Para solicitar acesso aos seus dados pessoais, entre em contato conosco através do email: <strong>moiseszapana@bankmidia.com.br</strong>
+          Para solicitar acesso aos seus dados pessoais, entre em contato conosco através do email: <strong>contato@bankmidia.com.br</strong>
         </p>
 
         <h3>Como Solicitar a Exclusão de Seus Dados</h3>
