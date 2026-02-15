@@ -1,8 +1,10 @@
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, Mail } from 'lucide-react';
 
 export default function Footer() {
   const version = "1.0.0";
-  const releaseDate = "15 de fevereiro de 2026";
+  const releaseDate = "15 de março de 2025";
+  const author = "moiseszapana";
+  const email = "moiseszapana@gmail.com";
   const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
 
   return (
@@ -63,10 +65,10 @@ export default function Footer() {
         {/* Divisor */}
         <div className="border-t border-sidebar-border my-8"></div>
 
-        {/* Informações de Versão */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        {/* Informações de Versão e Autor */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-sm text-muted-foreground">
-            <p>
+            <p className="mb-2">
               <strong>Versão:</strong> {version}
             </p>
             <p>
@@ -75,36 +77,59 @@ export default function Footer() {
           </div>
 
           <div className="text-sm text-muted-foreground">
-            <p>
-              Desenvolvido com ❤️ para <strong>BankMidia/MidiaPix</strong>
+            <p className="mb-2">
+              <strong>Autor:</strong>{' '}
+              <a
+                href={`https://github.com/${author}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:underline font-medium"
+              >
+                {author}
+              </a>
             </p>
-            <p className="mt-1">
-              © 2026 BankMidia. Todos os direitos reservados.
+            <p className="flex items-center gap-2">
+              <Mail size={14} />
+              <a
+                href={`mailto:${email}`}
+                className="text-primary hover:underline"
+              >
+                {email}
+              </a>
             </p>
           </div>
 
           <div className="text-sm text-muted-foreground text-right">
-            <p>
-              <a
-                href={`${repositoryUrl}/releases/tag/v${version}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Release Notes v{version}
-              </a>
+            <p className="mb-2">
+              Desenvolvido com ❤️ para <strong>BankMidia/MidiaPix</strong>
             </p>
-            <p className="mt-1">
-              <a
-                href={`${repositoryUrl}/blob/main/DOCUMENTACAO_README.md`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                Documentação do Projeto
-              </a>
+            <p>
+              © 2025 BankMidia. Todos os direitos reservados.
             </p>
           </div>
+        </div>
+
+        {/* Links Adicionais */}
+        <div className="border-t border-sidebar-border mt-8 pt-8 text-center text-sm text-muted-foreground">
+          <p className="mb-3">
+            <a
+              href={`${repositoryUrl}/releases/tag/v${version}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Release Notes v{version}
+            </a>
+            {' '} | {' '}
+            <a
+              href={`${repositoryUrl}/blob/main/DOCUMENTACAO_README.md`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Documentação do Projeto
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -253,19 +253,23 @@ sudo tail -f /var/log/apache2/bankmidia-docs-access.log
 ## Contato e Suporte
 
 Para dúvidas ou sugestões sobre a documentação, entre em contato com:
-- **Email:** support@bankmidia.com
+- **Autor:** moiseszapana
+- **Email:** moiseszapana@gmail.com
+- **GitHub:** https://github.com/moiseszapana
+- **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX
 - **Documentação ExAds:** https://docs-advanced.exads.com/
 
 ---
 
 ## Histórico de Versões
 
-### v1.0 (15 de fevereiro de 2026)
+### v1.0 (15 de março de 2025)
 - Versão inicial
 - 4 páginas principais
 - Design responsivo
 - Otimizado para Apache
 - Guia de instalação completo
+- Footer com informações de autor e versionamento
 
 ---
 
@@ -275,4 +279,8 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 
 ---
 
+**Versão:** 1.0  
+**Data:** 15 de março de 2025  
+**Autor:** moiseszapana (moiseszapana@gmail.com)  
+**Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX  
 **Desenvolvido com ❤️ para BankMidia/MidiaPix**
