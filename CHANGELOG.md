@@ -5,6 +5,22 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2025-03-15
+
+### Changed
+- Removido suporte a múltiplos idiomas
+- Simplificado sistema de rotas
+- Removido LanguageContext e hooks de idioma
+- Removido seletor de idioma do header
+
+### Removed
+- Rotas /en/ e /es/
+- Componente LanguageSelectorLinks
+- Hook useLanguageFromUrl
+- Sistema de tradução (translations.ts)
+
+---
+
 ## [1.3.0] - 2025-03-15
 
 ### Changed
