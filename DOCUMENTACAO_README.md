@@ -10,28 +10,64 @@ Este projeto contém a documentação completa de ajuda para o **AdServer BankMi
 
 ```
 bankmidia_docs/
-├── client/                          # Frontend (React + Tailwind)
+├── client/                                    # Frontend (React + Tailwind)
 │   ├── src/
-│   │   ├── pages/                  # Páginas da documentação
-│   │   │   ├── Home.tsx            # Página inicial
-│   │   │   ├── Introducao.tsx      # Introdução geral
-│   │   │   ├── Anunciantes.tsx     # Guia para Anunciantes
-│   │   │   ├── Editores.tsx        # Guia para Editores
-│   │   │   └── NotFound.tsx        # Página 404
+│   │   ├── pages/                           # Páginas da documentação
+│   │   │   ├── Home.tsx                     # Página inicial
+│   │   │   ├── HomeMultilang.tsx            # Página home com suporte a idiomas
+│   │   │   ├── Introducao.tsx               # Introdução geral
+│   │   │   ├── Anunciantes.tsx              # Guia para Anunciantes
+│   │   │   ├── Editores.tsx                 # Guia para Editores
+│   │   │   ├── API.tsx                      # Manual da API
+│   │   │   ├── APITester.tsx                # Testador interativo da API
+│   │   │   ├── Conformidade.tsx             # Conformidade LGPD/GDPR
+│   │   │   └── NotFound.tsx                 # Página 404
 │   │   ├── components/
-│   │   │   └── DocsLayout.tsx      # Layout principal
-│   │   ├── App.tsx                 # Roteamento
-│   │   ├── index.css               # Estilos globais
-│   │   └── main.tsx                # Entry point
-│   ├── public/                     # Assets estáticos
-│   └── index.html                  # Template HTML
-├── dist/                           # Arquivos compilados (gerados)
-│   └── public/                     # Arquivos prontos para Apache
-│       ├── index.html
-│       ├── assets/                 # CSS e JavaScript compilados
-│       └── .htaccess               # Configuração Apache
-├── package.json                    # Dependências do projeto
-└── DOCUMENTACAO_README.md          # Este arquivo
+│   │   │   ├── DocsLayout.tsx               # Layout principal com navegação
+│   │   │   ├── Footer.tsx                   # Footer com links e versionamento
+│   │   │   ├── LanguageSwitcher.tsx         # Seletor de idioma (descontinuado)
+│   │   │   ├── LanguageSelectorLinks.tsx    # Links de seleção de idioma
+│   │   │   └── ErrorBoundary.tsx            # Tratamento de erros
+│   │   ├── contexts/
+│   │   │   ├── ThemeContext.tsx             # Contexto de tema (claro/escuro)
+│   │   │   └── LanguageContext.tsx          # Contexto de idioma (descontinuado)
+│   │   ├── hooks/
+│   │   │   ├── useLanguage.ts               # Hook para gerenciar idioma (descontinuado)
+│   │   │   └── useLanguageFromUrl.ts        # Hook para detectar idioma da URL
+│   │   ├── lib/
+│   │   │   └── translations.ts              # Sistema de traduções (descontinuado)
+│   │   ├── App.tsx                          # Roteamento principal
+│   │   ├── index.css                        # Estilos globais e temas
+│   │   └── main.tsx                         # Entry point React
+│   ├── public/
+│   │   ├── logo.png                         # Logo MidiaPix
+│   │   └── index.html                       # Template HTML
+│   ├── index.html                           # Template HTML principal
+│   └── package.json                         # Dependências do projeto
+├── server/
+│   └── index.ts                             # Servidor Express (placeholder)
+├── shared/
+│   └── const.ts                             # Constantes compartilhadas
+├── dist/                                    # Arquivos compilados (gerados)
+│   ├── public/                              # Arquivos prontos para Apache
+│   │   ├── index.html
+│   │   ├── assets/                          # CSS e JavaScript compilados
+│   │   └── .htaccess                        # Configuração Apache
+│   └── index.js                             # Servidor compilado
+├── .manus-logs/                             # Logs de desenvolvimento
+│   ├── devserver.log                        # Logs do servidor Vite
+│   ├── browserConsole.log                   # Console do navegador
+│   ├── networkRequests.log                  # Requisições HTTP
+│   └── sessionReplay.log                    # Eventos de interação
+├── package.json                             # Dependências e scripts
+├── tsconfig.json                            # Configuração TypeScript
+├── vite.config.ts                           # Configuração Vite
+├── tailwind.config.ts                       # Configuração Tailwind CSS
+├── postcss.config.js                        # Configuração PostCSS
+├── .gitignore                               # Arquivos ignorados pelo Git
+├── CHANGELOG.md                             # Histórico de versões
+├── DOCUMENTACAO_README.md                   # Este arquivo
+└── GUIA_INSTALACAO_APACHE.md                # Guia de instalação Apache
 ```
 
 ---
@@ -55,7 +91,7 @@ bankmidia_docs/
 - Vantagens da plataforma
 - Segmentação avançada
 - Modelos de precificação
-- Painel do Anunciante (Dashboard, Estatísticas, Campanhas, Pagamentos, Marketplace)
+- Painel do Anunciante (Dashboard, Estatísticas, Campanhas)
 - Criando primeira campanha (passo a passo)
 - Melhores práticas
 - Suporte e recursos
@@ -64,11 +100,35 @@ bankmidia_docs/
 - Vantagens da plataforma
 - Alto potencial de ganhos
 - Múltiplos formatos de publicidade
-- Painel do Editor (Dashboard, Estatísticas, Sites & Zonas, Pagamentos, Neverblock)
+- Painel do Editor (Dashboard, Estatísticas, Sites & Zonas, Neverblock)
 - Configurando primeiro site (passo a passo)
 - Otimizando receita
 - Melhores práticas
 - Suporte e recursos
+
+### 5. **Manual da API**
+- Autenticação com Token Bearer
+- 19 Endpoints documentados
+- Modelos de Precificação (CPC, CPM, CPA, Smart CPM, CPV, Smart CPC, Smart Bid)
+- 20 Tamanhos de Anúncios suportados
+- Tratamento de Erros com códigos HTTP
+- Paginação e Exemplos de requisições
+
+### 6. **Testador da API**
+- Formulário de autenticação interativo
+- Consulta de campanhas para Anunciantes
+- Consulta de zonas para Editores
+- Exibição de dados em tempo real
+- Indicadores visuais de status
+
+### 7. **Conformidade LGPD/GDPR**
+- Lei Geral de Proteção de Dados (LGPD) - Brasil
+- Regulamento Geral sobre Proteção de Dados (GDPR) - UE
+- Princípios de proteção de dados
+- Direitos dos titulares de dados
+- Bases legais para tratamento
+- Segurança de dados
+- Instruções para exercer direitos
 
 ---
 
@@ -81,6 +141,8 @@ bankmidia_docs/
 - **shadcn/ui:** Componentes UI reutilizáveis
 - **Vite:** Build tool moderno
 - **Lucide React:** Ícones SVG
+- **Framer Motion:** Animações
+- **Streamdown:** Renderização de Markdown
 
 ---
 
@@ -163,7 +225,7 @@ Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de in
 - Segurança
 
 ### 3. **Documentação Completa**
-- 4 páginas principais
+- 7 páginas principais
 - Conteúdo adaptado para BankMidia/MidiaPix
 - Otimizado para leitura
 
@@ -253,7 +315,7 @@ sudo tail -f /var/log/apache2/bankmidia-docs-access.log
 
 Para dúvidas ou sugestões sobre a documentação, entre em contato com:
 - **Autor:** moiseszapana
-- **Email:** moiseszapana@bankmidia.com.br
+- **Email:** contato@bankmidia.com.br
 - **GitHub:** https://github.com/moiseszapana
 - **Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX
 
@@ -261,13 +323,14 @@ Para dúvidas ou sugestões sobre a documentação, entre em contato com:
 
 ## Histórico de Versões
 
-### v1.0 (15 de março de 2025)
-- Versão inicial
-- 4 páginas principais
-- Design responsivo
-- Otimizado para Apache
-- Guia de instalação completo
-- Footer com informações de autor e versionamento
+### v1.4.0 (15 de março de 2025)
+- Removido suporte a múltiplos idiomas
+- Simplificado sistema de rotas
+- Removido LanguageContext e hooks de idioma
+- Removido seletor de idioma do header
+- Adicionada página de Conformidade LGPD/GDPR
+- Atualizado email de contato para contato@bankmidia.com.br
+- Atualizado nome do repositório GitHub
 
 ---
 
@@ -277,10 +340,8 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 
 ---
 
-**Versão:** 1.2.0  
+**Versão:** 1.4.0  
 **Data:** 15 de março de 2025  
-**Autor:** moiseszapana (moiseszapana@bankmidia.com.br)  
-**Reposit**Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX  
-**Desenvolvido com ❤️ para BankMidia/MidiaPix**
-
-
+**Autor:** moiseszapana (contato@bankmidia.com.br)  
+**Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX  
+**Desenvolvido para BankMidia/MidiaPix**

@@ -7,108 +7,58 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.4.0] - 2025-03-15
 
+### Added
+- ✨ Página de Conformidade LGPD/GDPR completa
+- ✨ Testador interativo da API com autenticação
+- ✨ Manual completo da API com 19 endpoints
+- ✨ Logo MidiaPix integrado no header
+- ✨ Footer com links do repositório GitHub e versionamento
+
 ### Changed
-- Removido suporte a múltiplos idiomas
-- Simplificado sistema de rotas
-- Removido LanguageContext e hooks de idioma
-- Removido seletor de idioma do header
+- 🔄 Removido suporte a múltiplos idiomas (mantém apenas português)
+- 🔄 Simplificado sistema de rotas
+- 🔄 Atualizado email de contato para contato@bankmidia.com.br
+- 🔄 Atualizado nome do repositório para AdServer-BankMidia-MidiaPIX
+- 🔄 Refatorado sistema de páginas com 7 páginas principais
 
 ### Removed
-- Rotas /en/ e /es/
-- Componente LanguageSelectorLinks
-- Hook useLanguageFromUrl
-- Sistema de tradução (translations.ts)
+- ❌ Rotas /en/ e /es/
+- ❌ Componente LanguageSelectorLinks
+- ❌ Hook useLanguageFromUrl
+- ❌ Sistema de tradução (translations.ts)
+- ❌ LanguageContext dinâmico
+- ❌ Seções de Pagamentos (Anunciantes e Editores)
+- ❌ Seção de Marketplace (Anunciantes)
 
----
+### Fixed
+- 🐛 Corrigido seletor de idiomas que não funcionava
+- 🐛 Restaurado conteúdo removido acidentalmente
+- 🐛 Corrigido typo no header (BamkMidia → BankMidia)
 
-## [1.3.0] - 2025-03-15
+### Pages
+1. **Home** - Página inicial com visão geral
+2. **Introdução Geral** - Arquitetura e componentes
+3. **Guia para Anunciantes** - Recursos e painel
+4. **Guia para Editores** - Recursos e painel
+5. **Manual da API** - Documentação completa de endpoints
+6. **Testador da API** - Ferramenta interativa de testes
+7. **Conformidade LGPD/GDPR** - Políticas de proteção de dados
 
-### Changed
-- Refatorado sistema de idiomas para rotas estáticas (/pt/, /en/, /es/)
-- Removido LanguageContext dinâmico
-- Implementado seletor de idioma com links de navegação
-- Melhorada compatibilidade com Apache e hospedagem estática
+### Components
+- DocsLayout - Layout principal com navegação
+- Footer - Footer com informações e links
+- ErrorBoundary - Tratamento de erros
+- LanguageSwitcher - Seletor de idioma (descontinuado)
 
-### Added
-- Rotas estáticas para cada idioma
-- Hook useLanguageFromUrl para detectar idioma da URL
-- Componente LanguageSelectorLinks com links de navegação
-
----
-
-## [1.2.0] - 2025-03-15
-
-### Added
-- ✨ Suporte a múltiplos idiomas (Português, Inglês, Espanhol)
-- ✨ Seletor de idioma no header
-- ✨ Sistema de internacionalização (i18n) completo
-- ✨ Detecção automática de idioma do navegador
-- ✨ Persistência de preferência de idioma em localStorage
-- ✨ Traduções completas para todas as páginas
-- ✨ Interface responsiva com suporte a 3 idiomas
-
-### Changed
-- 📝 Versionamento atualizado para v1.2.0
-- 📝 Data da atualização: 15 de março de 2025
-- 📝 Footer agora suporta múltiplos idiomas
-
----
-
-## [1.1.0] - 2025-03-15
-
-### Added
-- ✨ Página Testador da API com formulário interativo
-- ✨ Autenticação com token Bearer
-- ✨ Consulta de campanhas em tempo real (endpoint /campaigns)
-- ✨ Consulta de zonas de anúncios em tempo real (endpoint /zones)
-- ✨ Tabelas interativas com dados da API
-- ✨ Tratamento de erros e validação de token
-- ✨ Indicadores visuais de status (ativo, pausado, deletado)
-- ✨ Interface responsiva para mobile e desktop
-
-### Changed
-- 📝 Versionamento atualizado para v1.1.0
-- 📝 Data da atualização: 15 de março de 2025
-
----
-
-## [1.0.0] - 2025-03-15
-
-### Added
-- ✨ Documentação completa do AdServer BankMidia/MidiaPix
-- ✨ Página inicial com navegação para Anunciantes e Editores
-- ✨ Guia completo para Anunciantes
-- ✨ Guia completo para Editores
-- ✨ Manual da API BankMidia/MidiaPix v2.0
-- ✨ Documentação de 19 endpoints principais
-- ✨ Exemplos de autenticação e requisições
-- ✨ Documentação de modelos de precificação (CPC, CPM, CPA, Smart CPM, CPV, Smart CPC, Smart Bid)
-- ✨ Documentação de 20 tamanhos de anúncios suportados
-- ✨ Guia de tratamento de erros e códigos HTTP
-- ✨ Documentação de paginação e filtros
-- ✨ Footer com informações de autor e versionamento
-- ✨ Design responsivo com sidebar colapsável
-- ✨ Arquivo .htaccess para hospedagem Apache
-- ✨ Guia completo de instalação no Apache Linux
-- ✨ Suporte a HTTPS/SSL
-- ✨ Compressão GZIP habilitada
-- ✨ Headers de segurança configurados
-
-### Changed
-- 📝 Data do projeto atualizada para 15/03/2025
-- 🎨 Design profissional com paleta de cores azul corporativo
-- 📱 Layout totalmente responsivo para mobile, tablet e desktop
-
-### Technical Details
+### Technologies
 - React 19 + TypeScript
 - Tailwind CSS 4
-- Vite build tool
+- Vite + Wouter
 - shadcn/ui components
-- Wouter routing
 - Lucide React icons
 
 ### Author
-- **moiseszapana** (moiseszapana@bankmidia.com.br)
+- **moiseszapana** (contato@bankmidia.com.br)
 - GitHub: https://github.com/moiseszapana
 
 ### Repository
@@ -118,64 +68,22 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## Notas de Lançamento
 
-### v1.0.0 - Lançamento Inicial (15 de março de 2025)
+### Versão 1.4.0 - Documentação Completa do AdServer BankMidia/MidiaPix
 
-Esta é a primeira versão estável da Documentação BankMidia/MidiaPix. A documentação inclui:
+Esta versão marca o lançamento completo da documentação do AdServer BankMidia/MidiaPix com:
 
-#### Páginas Principais
-1. **Página Inicial** - Visão geral e navegação
-2. **Introdução Geral** - Arquitetura e componentes da plataforma
-3. **Guia para Anunciantes** - Criação e gerenciamento de campanhas
-4. **Guia para Editores** - Gerenciamento de sites e zonas
-5. **Manual da API** - Documentação técnica completa
+- **7 páginas principais** cobrindo todos os aspectos da plataforma
+- **Design responsivo** otimizado para Apache Linux
+- **Conformidade legal** com LGPD (Brasil) e GDPR (UE)
+- **Testador interativo** para a API com autenticação
+- **Documentação técnica** completa com 19 endpoints
 
-#### Recursos de Hospedagem
-- Otimizado para Apache Linux
-- Arquivo .htaccess com rewrite rules para SPA
-- Compressão GZIP
-- Cache inteligente
-- Headers de segurança
-- Suporte a HTTPS/SSL
-
-#### Qualidade
-- Design profissional e responsivo
-- Navegação intuitiva
-- Documentação clara e detalhada
-- Exemplos práticos
-- Links para documentação interativa
+A documentação está pronta para hospedagem em servidor Apache com suporte a HTTPS, compressão GZIP e otimizações de performance.
 
 ---
 
-## Versões Futuras
-
-### Planejado para v1.2.0
-- [ ] Exemplos de código em múltiplas linguagens (cURL, Python, JavaScript, PHP)
-- [ ] Documentação de Webhooks
-- [ ] Guia de Rate Limiting
-- [ ] Seção de FAQ
-- [ ] Formulário de feedback
-
-### Planejado para v1.3.0
-- [ ] Busca full-text
-- [ ] Dark mode
-- [ ] Suporte a múltiplos idiomas
-- [ ] Integração com Algolia para busca
-- [ ] Analytics
-
----
-
-## Como Contribuir
-
-Se você encontrou um erro ou tem sugestões de melhoria, entre em contato:
-- Email: moiseszapana@bankmidia.com.br
-- GitHub: https://github.com/moiseszapana
-
----
-
-## Licença
-
-Esta documentação é propriedade do BankMidia e é fornecida como-é para fins de suporte ao usuário.
-
----
-
-**Última atualização:** 15 de março de 2025
+**Versão:** 1.4.0  
+**Data:** 15 de março de 2025  
+**Status:** Estável  
+**Compatibilidade:** Apache 2.4+, Linux  
+**Navegadores:** Chrome 80+, Firefox 75+, Safari 13+, Edge 81+
