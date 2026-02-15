@@ -44,12 +44,16 @@ bankmidia_docs/
 │   │   └── index.html                       # Template HTML
 │   ├── index.html                           # Template HTML principal
 │   └── package.json                         # Dependências do projeto
+├── server/
+│   └── index.ts                             # Servidor Express (placeholder)
+├── shared/
+│   └── const.ts                             # Constantes compartilhadas
 ├── dist/                                    # Arquivos compilados (gerados)
-│   └── public/                              # Arquivos prontos para Apache
-│       ├── index.html
-│       ├── assets/                          # CSS e JavaScript compilados
-│       ├── .htaccess                        # Configuração Apache
-│       └── logo.png                         # Logo MidiaPix
+│   ├── public/                              # Arquivos prontos para Apache
+│   │   ├── index.html
+│   │   ├── assets/                          # CSS e JavaScript compilados
+│   │   └── .htaccess                        # Configuração Apache
+│   └── index.js                             # Servidor compilado
 ├── package.json                             # Dependências e scripts
 ├── tsconfig.json                            # Configuração TypeScript
 ├── vite.config.ts                           # Configuração Vite
@@ -159,7 +163,7 @@ bankmidia_docs/
 
 ## Compilação e Build
 
-### Desenvolvimento Local
+### Desenvolvimento
 ```bash
 cd /home/ubuntu/bankmidia_docs
 pnpm install
@@ -168,19 +172,17 @@ pnpm dev
 
 Acesse `http://localhost:3000` no navegador.
 
-### Build de Produção
+### Produção
 ```bash
 cd /home/ubuntu/bankmidia_docs
 pnpm build
 ```
 
-Os arquivos compilados estarão em `dist/public/` e estão prontos para serem copiados diretamente para o Apache.
-
-**Importante:** Este é um site estático puro (SPA - Single Page Application). Não é necessário Node.js em produção, apenas Apache rodando nas portas 80/443.
+Os arquivos compilados estarão em `dist/public/`.
 
 ---
 
-## Hospedagem no Apache (AlmaLinux)
+## Hospedagem no Apache
 
 ### Arquivos para Hospedagem
 
@@ -189,100 +191,15 @@ Os arquivos prontos para hospedagem estão em:
 /home/ubuntu/bankmidia_docs/dist/public/
 ```
 
-### Instalação no AlmaLinux
+### Configuração Mínima
 
-#### 1. Instalar Apache
-```bash
-sudo dnf update -y
-sudo dnf install httpd -y
-sudo systemctl start httpd
-sudo systemctl enable httpd
-```
-
-#### 2. Configurar Firewall
-```bash
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
-sudo firewall-cmd --reload
-```
-
-#### 3. Preparar Diretório
-```bash
-sudo mkdir -p /var/www/html/bankmidia-docs
-sudo chown -R apache:apache /var/www/html/bankmidia-docs
-sudo chmod -R 755 /var/www/html/bankmidia-docs
-```
-
-#### 4. Copiar Arquivos
-```bash
-# Copiar todos os arquivos compilados (incluindo .htaccess)
-sudo cp -r /home/ubuntu/bankmidia_docs/dist/public/* /var/www/html/bankmidia-docs/
-sudo cp /home/ubuntu/bankmidia_docs/dist/public/.htaccess /var/www/html/bankmidia-docs/
-sudo chown -R apache:apache /var/www/html/bankmidia-docs
-```
-
-**Nota:** O arquivo `.htaccess` é essencial para o funcionamento correto do roteamento SPA.
-
-#### 5. Configurar VirtualHost
-Crie o arquivo `/etc/httpd/conf.d/bankmidia-docs.conf`:
-```apache
-<VirtualHost *:80>
-    ServerName docs.bankmidia.com.br
-    ServerAlias www.docs.bankmidia.com.br
-    DocumentRoot /var/www/html/bankmidia-docs
-
-    <Directory /var/www/html/bankmidia-docs>
-        Options -Indexes +FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog /var/log/httpd/bankmidia-docs-error.log
-    CustomLog /var/log/httpd/bankmidia-docs-access.log combined
-</VirtualHost>
-```
-
-#### 6. Habilitar mod_rewrite e módulos necessários
-```bash
-# Verificar se mod_rewrite está habilitado
-sudo httpd -M | grep rewrite
-
-# Se não estiver, habilitar
-sudo dnf install mod_ssl -y
-
-# Reiniciar Apache
-sudo systemctl restart httpd
-```
-
-#### 7. Configurar SELinux (se habilitado)
-```bash
-sudo setsebool -P httpd_can_network_connect 1
-sudo chcon -R -t httpd_sys_content_t /var/www/html/bankmidia-docs
-```
-
-#### 8. Testar Configuração
-```bash
-sudo httpd -t
-sudo systemctl restart httpd
-```
-
-### Configuração HTTPS/SSL com Let's Encrypt
-
-```bash
-# Instalar Certbot
-sudo dnf install certbot python3-certbot-apache -y
-
-# Obter certificado SSL
-sudo certbot --apache -d docs.bankmidia.com.br -d www.docs.bankmidia.com.br
-
-# Renovação automática
-sudo systemctl enable certbot-renew.timer
-sudo systemctl start certbot-renew.timer
-```
+1. Copie os arquivos para o DocumentRoot do Apache
+2. Certifique-se de que o módulo `mod_rewrite` está habilitado
+3. O arquivo `.htaccess` já está configurado para SPA routing
 
 ### Instruções Detalhadas
 
-Consulte o arquivo `INSTALACAO_APACHE_LINUX.md` para instruções completas de instalação e configuração.
+Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de instalação e configuração.
 
 ---
 

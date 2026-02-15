@@ -11,8 +11,8 @@ import Introducao from "./pages/Introducao";
 import Anunciantes from "./pages/Anunciantes";
 import Editores from "./pages/Editores";
 import Conformidade from "./pages/Conformidade";
+
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       {/* Português */}

@@ -3,8 +3,6 @@ import { ArrowRight, BookOpen, Users, BarChart3 } from 'lucide-react';
 import DocsLayout from '@/components/DocsLayout';
 
 export default function Home() {
-
-
   return (
     <DocsLayout currentPage="/">
       {/* Hero Section */}
