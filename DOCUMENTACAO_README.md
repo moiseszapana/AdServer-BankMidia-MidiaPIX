@@ -163,7 +163,7 @@ bankmidia_docs/
 
 ## Compilação e Build
 
-### Desenvolvimento
+### Desenvolvimento Local
 ```bash
 cd /home/ubuntu/bankmidia_docs
 pnpm install
@@ -172,13 +172,15 @@ pnpm dev
 
 Acesse `http://localhost:3000` no navegador.
 
-### Produção
+### Build de Produção
 ```bash
 cd /home/ubuntu/bankmidia_docs
 pnpm build
 ```
 
-Os arquivos compilados estarão em `dist/public/`.
+Os arquivos compilados estarão em `dist/public/` e estão prontos para serem copiados diretamente para o Apache.
+
+**Importante:** Este é um site estático puro (SPA - Single Page Application). Não é necessário Node.js em produção, apenas Apache rodando nas portas 80/443.
 
 ---
 
@@ -217,9 +219,13 @@ sudo chmod -R 755 /var/www/html/bankmidia-docs
 
 #### 4. Copiar Arquivos
 ```bash
+# Copiar todos os arquivos compilados (incluindo .htaccess)
 sudo cp -r /home/ubuntu/bankmidia_docs/dist/public/* /var/www/html/bankmidia-docs/
+sudo cp /home/ubuntu/bankmidia_docs/dist/public/.htaccess /var/www/html/bankmidia-docs/
 sudo chown -R apache:apache /var/www/html/bankmidia-docs
 ```
+
+**Nota:** O arquivo `.htaccess` é essencial para o funcionamento correto do roteamento SPA.
 
 #### 5. Configurar VirtualHost
 Crie o arquivo `/etc/httpd/conf.d/bankmidia-docs.conf`:
@@ -240,9 +246,15 @@ Crie o arquivo `/etc/httpd/conf.d/bankmidia-docs.conf`:
 </VirtualHost>
 ```
 
-#### 6. Habilitar mod_rewrite
+#### 6. Habilitar mod_rewrite e módulos necessários
 ```bash
+# Verificar se mod_rewrite está habilitado
+sudo httpd -M | grep rewrite
+
+# Se não estiver, habilitar
 sudo dnf install mod_ssl -y
+
+# Reiniciar Apache
 sudo systemctl restart httpd
 ```
 
