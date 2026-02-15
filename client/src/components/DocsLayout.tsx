@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'wouter';
+import Footer from './Footer';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -83,6 +84,9 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
           onClick={() => setSidebarOpen(false)}
         />
       )}
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
