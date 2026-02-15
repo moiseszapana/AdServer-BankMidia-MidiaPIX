@@ -99,30 +99,6 @@ export default function Anunciantes() {
           <li>Clonar campanhas existentes</li>
         </ul>
 
-        <h3>Pagamentos</h3>
-        <p>
-          Centraliza a gestão de todos os aspectos financeiros da sua conta. Aqui você pode:
-        </p>
-        <ul>
-          <li>Visualizar histórico de faturas</li>
-          <li>Gerenciar métodos de pagamento</li>
-          <li>Configurar alertas de orçamento</li>
-          <li>Acompanhar gastos em tempo real</li>
-          <li>Fazer recargas de crédito</li>
-        </ul>
-
-        <h3>Marketplace</h3>
-        <p>
-          Apresenta uma lista de todos os sites e espaços publicitários disponíveis na rede, onde você pode explorar oportunidades e comprar inventário de anúncios. No Marketplace você pode:
-        </p>
-        <ul>
-          <li>Pesquisar sites por categoria ou audiência</li>
-          <li>Visualizar informações detalhadas sobre cada site</li>
-          <li>Ver estatísticas de tráfego e audiência</li>
-          <li>Comprar inventário diretamente</li>
-          <li>Negociar taxas especiais com editores</li>
-        </ul>
-
         <h2>Criando Sua Primeira Campanha</h2>
         <p>
           Siga os passos abaixo para criar sua primeira campanha:
