@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto contém a documentação completa de ajuda para o **AdServer BankMidia/MidiaPix**, um whitelabel do AdServer ExAds. A documentação foi desenvolvida como um site estático responsivo, otimizado para hospedagem em servidor Apache Linux.
+Este projeto contém a documentação completa de ajuda para o **AdServer BankMidia/MidiaPix**. A documentação foi desenvolvida como um site estático responsivo, otimizado para hospedagem em servidor Apache Linux.
 
 ---
 
@@ -165,7 +165,6 @@ Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de in
 ### 3. **Documentação Completa**
 - 4 páginas principais
 - Conteúdo adaptado para BankMidia/MidiaPix
-- Baseado na documentação ExAds
 - Otimizado para leitura
 
 ---
@@ -257,7 +256,6 @@ Para dúvidas ou sugestões sobre a documentação, entre em contato com:
 - **Email:** moiseszapana@bankmidia.com.br
 - **GitHub:** https://github.com/moiseszapana
 - **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX
-- **Documentação ExAds:** https://docs-advanced.exads.com/
 
 ---
 

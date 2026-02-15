@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Sobre</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Documentação oficial do AdServer BankMidia/MidiaPix, um whitelabel do AdServer ExAds para gerenciamento de campanhas publicitárias online.
+              Documentação oficial do AdServer BankMidia/MidiaPix para gerenciamento de campanhas publicitárias online.
             </p>
           </div>
 

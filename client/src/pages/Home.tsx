@@ -15,7 +15,7 @@ export default function Home() {
             Bem-vindo à documentação completa do AdServer BankMidia/MidiaPix. Encontre guias detalhados, tutoriais e referências para aproveitar ao máximo nossa plataforma de publicidade online.
           </p>
           <p className="text-muted-foreground mb-8">
-            O BankMidia/MidiaPix é um whitelabel do AdServer ExAds, oferecendo soluções robustas para Anunciantes e Editores gerenciarem suas campanhas publicitárias com eficiência.
+            O BankMidia/MidiaPix é uma plataforma robusta que oferece soluções completas para Anunciantes e Editores gerenciarem suas campanhas publicitárias com eficiência.
           </p>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Home() {
               O que é o BankMidia/MidiaPix?
             </h3>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              O BankMidia/MidiaPix é uma plataforma completa de gerenciamento de publicidade online, baseada na tecnologia do AdServer ExAds. Oferece uma interface unificada para que Anunciantes e Editores possam monitorar e gerenciar de forma abrangente todas as operações de suas campanhas publicitárias.
+              O BankMidia/MidiaPix é uma plataforma completa de gerenciamento de publicidade online que oferece uma interface unificada para que Anunciantes e Editores possam monitorar e gerenciar de forma abrangente todas as operações de suas campanhas publicitárias.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               A plataforma fornece ferramentas avançadas de segmentação, relatórios em tempo real, múltiplos formatos de anúncios e opções flexíveis de pagamento para maximizar o sucesso de suas operações publicitárias.

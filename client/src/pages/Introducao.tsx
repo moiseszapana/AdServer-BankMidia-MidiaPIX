@@ -14,7 +14,7 @@ export default function Introducao() {
 
         <h2>O que é o BankMidia/MidiaPix?</h2>
         <p>
-          O BankMidia/MidiaPix é um whitelabel do AdServer ExAds, uma plataforma líder em tecnologia de publicidade programática. A plataforma oferece uma solução completa para gerenciamento de campanhas publicitárias online, combinando ferramentas avançadas de segmentação, análise em tempo real e múltiplas opções de monetização.
+          O BankMidia/MidiaPix é uma plataforma líder em tecnologia de publicidade programática. Oferece uma solução completa para gerenciamento de campanhas publicitárias online, combinando ferramentas avançadas de segmentação, análise em tempo real e múltiplas opções de monetização.
         </p>
 
         <h2>Arquitetura da Plataforma</h2>
