@@ -255,7 +255,7 @@ Para dúvidas ou sugestões sobre a documentação, entre em contato com:
 - **Autor:** moiseszapana
 - **Email:** moiseszapana@bankmidia.com.br
 - **GitHub:** https://github.com/moiseszapana
-- **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX
+- **Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX
 
 ---
 
@@ -280,7 +280,7 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 **Versão:** 1.2.0  
 **Data:** 15 de março de 2025  
 **Autor:** moiseszapana (moiseszapana@bankmidia.com.br)  
-**Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX  
+**Reposit**Repositório:** https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX  
 **Desenvolvido com ❤️ para BankMidia/MidiaPix**
 
 

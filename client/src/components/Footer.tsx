@@ -4,7 +4,7 @@ export default function Footer() {
   const version = "1.3.0";
   const author = "moiseszapana";
   const email = "moiseszapana@bankmidia.com.br";
-  const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
+  const repositoryUrl = "https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX";
 
   return (
     <footer className="bg-sidebar border-t border-sidebar-border mt-16">

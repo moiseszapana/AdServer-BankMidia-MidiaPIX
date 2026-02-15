@@ -112,7 +112,7 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - GitHub: https://github.com/moiseszapana
 
 ### Repository
-- https://github.com/moiseszapana/BankMidia-MidiaPIX
+- https://github.com/moiseszapana/AdServer-BankMidia-MidiaPIX
 
 ---
 
