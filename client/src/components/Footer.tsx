@@ -97,7 +97,7 @@ export default function Footer() {
 
           <div className="text-sm text-muted-foreground text-right">
             <p className="mb-2">
-              Desenvolvido com ❤️ para <strong>BankMidia/MidiaPix</strong>
+              Desenvolvido para <strong>BankMidia/MidiaPix</strong>
             </p>
             <p>
               © 2025 BankMidia. Todos os direitos reservados.
