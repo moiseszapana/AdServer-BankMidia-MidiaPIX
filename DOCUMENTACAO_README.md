@@ -182,24 +182,52 @@ Os arquivos compilados estarão em `dist/public/`.
 
 ---
 
-## Hospedagem no Apache
+## Opções de Hospedagem
 
-### Arquivos para Hospedagem
+### Opção 1: CWP (Control Web Panel) com Node.js - RECOMENDADO
 
-Os arquivos prontos para hospedagem estão em:
+Esta é a opção recomendada para servidores com CWP instalado. O projeto roda como aplicação Node.js com proxy reverso automático do Apache.
+
+**Vantagens:**
+- Gerenciamento simplificado via painel web
+- Proxy reverso configurado automaticamente
+- Suporte a SSL/HTTPS integrado
+- Monitoramento e logs centralizados
+- Reinício automático em caso de falha
+
+**Requisitos:**
+- Servidor com CWP instalado
+- Node.js 18+ habilitado no CWP
+- Acesso ao painel CWP
+
+**Instruções Completas:**
+Consulte o arquivo `INSTALACAO_CWP.md` para guia detalhado passo a passo.
+
+**Scripts Disponíveis:**
+```bash
+# Build para produção
+pnpm cwp:build
+
+# Iniciar servidor
+pnpm cwp:start
+```
+
+### Opção 2: Apache Estático (AlmaLinux)
+
+Para servidores sem CWP ou se preferir servir arquivos estáticos diretamente pelo Apache.
+
+**Arquivos para Hospedagem:**
 ```
 /home/ubuntu/bankmidia_docs/dist/public/
 ```
 
-### Configuração Mínima
-
+**Configuração Mínima:**
 1. Copie os arquivos para o DocumentRoot do Apache
 2. Certifique-se de que o módulo `mod_rewrite` está habilitado
 3. O arquivo `.htaccess` já está configurado para SPA routing
 
-### Instruções Detalhadas
-
-Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de instalação e configuração.
+**Instruções Detalhadas:**
+Consulte o arquivo `INSTALACAO_APACHE_LINUX.md` para instruções completas.
 
 ---
 
@@ -211,7 +239,16 @@ Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de in
 - Compressão GZIP
 - Headers de segurança
 
-### 2. **Guia de Instalação Apache**
+### 2. **Guia de Instalação CWP**
+- Pré-requisitos
+- Upload e configuração do projeto
+- Configuração no Node.js Selector
+- Proxy reverso automático
+- SSL/HTTPS com AutoSSL
+- Monitoramento e logs
+- Troubleshooting
+
+### 3. **Guia de Instalação Apache**
 - Pré-requisitos
 - Instalação do Apache
 - Configuração de VirtualHost
@@ -219,7 +256,7 @@ Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de in
 - Troubleshooting
 - Segurança
 
-### 3. **Documentação Completa**
+### 4. **Documentação Completa**
 - 7 páginas principais
 - Conteúdo adaptado para BankMidia/MidiaPix
 - Otimizado para leitura
