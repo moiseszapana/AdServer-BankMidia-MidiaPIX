@@ -1,10 +1,6 @@
 import DocsLayout from '@/components/DocsLayout';
-import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
-import { getTranslation } from '@/lib/translations';
 
 export default function Introducao() {
-  const language = useLanguageFromUrl();
-  const t = (path: string) => getTranslation(language, path);
   return (
     <DocsLayout currentPage="/introducao">
       <article className="prose max-w-4xl">

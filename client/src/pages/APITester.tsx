@@ -1,6 +1,4 @@
-import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
-import { getTranslation } from '@/lib/translations';
-import { useState } from 'react';
+import DocsLayout from '@/components/DocsLayout';
 import { AlertCircle, CheckCircle, Loader2, Eye, EyeOff } from 'lucide-react';
 import DocsLayout from '@/components/DocsLayout';
 import { Button } from '@/components/ui/button';

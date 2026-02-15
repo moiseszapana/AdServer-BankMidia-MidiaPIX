@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'wouter';
 import Footer from './Footer';
-import LanguageSelectorLinks from './LanguageSelectorLinks';
-import { useLanguageFromUrl } from '@/hooks/useLanguageFromUrl';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -12,7 +10,6 @@ interface DocsLayoutProps {
 
 export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const language = useLanguageFromUrl();
 
   const navItems = [
     { href: '/', label: 'Início' },
@@ -36,7 +33,6 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
           </Link>
           
           <div className="flex items-center gap-4">
-            <LanguageSelectorLinks />
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="lg:hidden p-2 hover:bg-muted rounded-lg"
