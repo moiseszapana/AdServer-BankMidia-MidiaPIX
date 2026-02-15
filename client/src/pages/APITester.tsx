@@ -44,16 +44,43 @@ export default function APITester() {
         },
       });
 
+      // Log detalhado para debug
+      console.log('Status da resposta:', response.status);
+      console.log('Headers da resposta:', Object.fromEntries(response.headers.entries()));
+
       if (response.ok) {
+        const data = await response.json();
+        console.log('Dados do usuário:', data);
         setIsAuthenticated(true);
         setSuccess('✓ Autenticação realizada com sucesso!');
-      } else if (response.status === 401) {
-        setError('Token inválido ou expirado. Verifique suas credenciais.');
       } else {
-        setError(`Erro na autenticação: ${response.status} ${response.statusText}`);
+        // Tentar ler corpo da resposta para mais detalhes
+        let errorDetails = '';
+        try {
+          const errorData = await response.json();
+          console.log('Erro detalhado:', errorData);
+          errorDetails = errorData.message || errorData.error || JSON.stringify(errorData);
+        } catch {
+          errorDetails = await response.text();
+        }
+
+        if (response.status === 401) {
+          setError(`Token inválido ou expirado. Detalhes: ${errorDetails || 'Verifique suas credenciais.'}`);
+        } else if (response.status === 403) {
+          setError(`Acesso negado. Seu token não tem permissões para acessar este recurso. Detalhes: ${errorDetails}`);
+        } else if (response.status === 404) {
+          setError(`Endpoint não encontrado. Verifique se a URL da API está correta. Status: ${response.status}`);
+        } else {
+          setError(`Erro na autenticação: ${response.status} ${response.statusText}. Detalhes: ${errorDetails}`);
+        }
       }
-    } catch (err) {
-      setError('Erro ao conectar com a API. Verifique sua conexão e tente novamente.');
+    } catch (err: any) {
+      console.error('Erro na requisição:', err);
+      if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
+        setError('Erro de CORS ou conexão bloqueada. A API pode não permitir requisições do navegador. Tente usar o token diretamente nos endpoints abaixo.');
+      } else {
+        setError(`Erro ao conectar com a API: ${err.message || 'Verifique sua conexão e tente novamente.'}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -176,6 +203,26 @@ export default function APITester() {
               <p className="text-sm text-gray-600">
                 💡 <strong>Como obter seu token:</strong> Faça login na sua conta BankMidia/MidiaPix e acesse as configurações de API para gerar um token de autenticação.
               </p>
+
+              <div className="mt-4 pt-4 border-t border-blue-200">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (token.trim()) {
+                      setIsAuthenticated(true);
+                      setSuccess('✓ Token salvo! Você pode testar os endpoints abaixo.');
+                    } else {
+                      setError('Por favor, insira um token antes de pular a validação.');
+                    }
+                  }}
+                  className="text-sm text-blue-600 hover:text-blue-800 underline"
+                >
+                  ⚠️ Pular validação e usar token diretamente
+                </button>
+                <p className="text-xs text-gray-500 mt-1">
+                  Use esta opção se a validação automática falhar por problemas de CORS ou endpoint.
+                </p>
+              </div>
             </form>
           ) : (
             <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-4">

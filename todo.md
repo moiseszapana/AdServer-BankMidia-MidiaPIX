@@ -24,3 +24,13 @@
 - [x] Adicionar instruções no DOCUMENTACAO_README.md
 - [x] Adicionar instruções no INSTALACAO_CWP.md
 - [x] Publicar no GitHub
+
+## Corrigir Validação de Token no APITester
+
+- [x] Ler arquivo APITester.tsx
+- [x] Identificar problema na validação do token
+- [x] Corrigir lógica de validação com logs detalhados
+- [x] Adicionar opção de pular validação
+- [x] Melhorar tratamento de erros (401, 403, 404, CORS)
+- [x] Compilar projeto
+- [ ] Publicar no GitHub
