@@ -282,3 +282,5 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 **Autor:** moiseszapana (moiseszapana@bankmidia.com.br)  
 **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX  
 **Desenvolvido com ❤️ para BankMidia/MidiaPix**
+
+
