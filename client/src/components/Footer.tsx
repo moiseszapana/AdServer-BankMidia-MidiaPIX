@@ -3,7 +3,7 @@ import { Github, ExternalLink, Mail } from 'lucide-react';
 export default function Footer() {
   const version = "1.1.0";
   const author = "moiseszapana";
-  const email = "moiseszapana@gmail.com";
+  const email = "moiseszapana@bankmidia.com.br";
   const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
 
   return (

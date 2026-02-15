@@ -254,7 +254,7 @@ sudo tail -f /var/log/apache2/bankmidia-docs-access.log
 
 Para dúvidas ou sugestões sobre a documentação, entre em contato com:
 - **Autor:** moiseszapana
-- **Email:** moiseszapana@gmail.com
+- **Email:** moiseszapana@bankmidia.com.br
 - **GitHub:** https://github.com/moiseszapana
 - **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX
 - **Documentação ExAds:** https://docs-advanced.exads.com/
@@ -279,8 +279,8 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 
 ---
 
-**Versão:** 1.0  
+**Versão:** 1.1.0  
 **Data:** 15 de março de 2025  
-**Autor:** moiseszapana (moiseszapana@gmail.com)  
+**Autor:** moiseszapana (moiseszapana@bankmidia.com.br)  
 **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX  
 **Desenvolvido com ❤️ para BankMidia/MidiaPix**

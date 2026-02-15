@@ -59,7 +59,7 @@ e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Lucide React icons
 
 ### Author
-- **moiseszapana** (moiseszapana@gmail.com)
+- **moiseszapana** (moiseszapana@bankmidia.com.br)
 - GitHub: https://github.com/moiseszapana
 
 ### Repository
@@ -118,7 +118,7 @@ Esta é a primeira versão estável da Documentação BankMidia/MidiaPix. A docu
 ## Como Contribuir
 
 Se você encontrou um erro ou tem sugestões de melhoria, entre em contato:
-- Email: moiseszapana@gmail.com
+- Email: moiseszapana@bankmidia.com.br
 - GitHub: https://github.com/moiseszapana
 
 ---

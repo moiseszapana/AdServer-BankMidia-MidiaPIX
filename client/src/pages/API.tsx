@@ -425,7 +425,7 @@ Content-Type: application/json`}</code></pre>
         </p>
 
         <ul>
-          <li><strong>Email:</strong> moiseszapana@gmail.com</li>
+          <li><strong>Email:</strong> moiseszapana@bankmidia.com.br</li>
           <li><strong>Documentação Interativa:</strong> <a href="https://api.bankmidia.com.br/v2/docs/">https://api.bankmidia.com.br/v2/docs/</a></li>
           <li><strong>GitHub:</strong> <a href="https://github.com/moiseszapana">https://github.com/moiseszapana</a></li>
         </ul>
