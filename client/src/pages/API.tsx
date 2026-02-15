@@ -240,6 +240,210 @@ Content-Type: application/json
           <strong>Nota:</strong> Este endpoint é otimizado para baixa latência e deve ser usado para solicitações de anúncios em tempo real.
         </p>
 
+        <h4>Estrutura da Resposta</h4>
+        <p>
+          A resposta é retornada em formato JSON e contém informações sobre os anúncios disponíveis para as zonas solicitadas.
+        </p>
+
+        <h5>Campos da Resposta - Zones</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>idzone</code></td>
+              <td>number</td>
+              <td>ID da zona de anúncio</td>
+            </tr>
+            <tr>
+              <td><code>type</code></td>
+              <td>string</td>
+              <td>Formato do anúncio: banner, sticky_banner, popunder, instant_message, mobile_instant_message, native_ad, outstream_video</td>
+            </tr>
+            <tr>
+              <td><code>data</code></td>
+              <td>object</td>
+              <td>Objeto contendo os dados do anúncio</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>Campos da Resposta - Data (Banner)</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>url</code></td>
+              <td>string</td>
+              <td>URL de destino do anúncio (click-through)</td>
+            </tr>
+            <tr>
+              <td><code>impression</code></td>
+              <td>string</td>
+              <td>URL do rastreador de impressão (deve ser chamada quando o anúncio for exibido)</td>
+            </tr>
+            <tr>
+              <td><code>image</code></td>
+              <td>string</td>
+              <td>URL da imagem original do anúncio</td>
+            </tr>
+            <tr>
+              <td><code>width</code></td>
+              <td>number</td>
+              <td>Largura do anúncio em pixels</td>
+            </tr>
+            <tr>
+              <td><code>height</code></td>
+              <td>number</td>
+              <td>Altura do anúncio em pixels</td>
+            </tr>
+            <tr>
+              <td><code>media</code></td>
+              <td>string</td>
+              <td>Tipo de mídia: img_banner, html_banner, ou video_banner</td>
+            </tr>
+            <tr>
+              <td><code>html</code></td>
+              <td>string</td>
+              <td>(Opcional) Código HTML do anúncio (quando media = html_banner)</td>
+            </tr>
+            <tr>
+              <td><code>video</code></td>
+              <td>string</td>
+              <td>(Opcional) URL do vídeo (quando media = video_banner)</td>
+            </tr>
+            <tr>
+              <td><code>optimum_image</code></td>
+              <td>string</td>
+              <td>(Opcional) Versão MP4 otimizada para GIFs animados</td>
+            </tr>
+            <tr>
+              <td><code>variation_fields</code></td>
+              <td>array</td>
+              <td>Array de campos customizáveis (tag + value)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h5>Campos de Variation Fields</h5>
+        <table>
+          <thead>
+            <tr>
+              <th>Tag</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>title</code></td>
+              <td>Título do anúncio</td>
+            </tr>
+            <tr>
+              <td><code>description</code></td>
+              <td>Descrição do anúncio</td>
+            </tr>
+            <tr>
+              <td><code>brand</code></td>
+              <td>Nome da marca</td>
+            </tr>
+            <tr>
+              <td><code>cta</code></td>
+              <td>Call-to-action (ex: "Clique aqui!")</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Exemplo de Resposta - Image Banner</h4>
+        <pre><code>{`{
+  "zones": [
+    {
+      "idzone": 15,
+      "type": "banner",
+      "data": {
+        "url": "http://main.bankmidia.com.br/click.php?data=...",
+        "impression": "http://syndication.bankmidia.com.br/cimp.php?t=api&data=...",
+        "image": "http://static.bankmidia.com.br/library/674471/66c5e562a8a324a649c05a52bb03b65be3f0882a.png",
+        "width": 300,
+        "height": 250,
+        "media": "img_banner",
+        "variation_fields": [
+          {
+            "tag": "title",
+            "value": "Financiamento Toyota"
+          },
+          {
+            "tag": "description",
+            "value": "Condições especiais para score acima de 300"
+          },
+          {
+            "tag": "brand",
+            "value": "Toyota"
+          },
+          {
+            "tag": "cta",
+            "value": "Simule agora!"
+          }
+        ]
+      }
+    }
+  ]
+}`}</code></pre>
+
+        <h4>Exemplo de Resposta - HTML Banner</h4>
+        <pre><code>{`{
+  "zones": [
+    {
+      "idzone": 15,
+      "type": "banner",
+      "data": {
+        "html": "<div id='ad_container'>Anúncio HTML Interativo</div>",
+        "impression": "http://syndication.bankmidia.com.br/cimp.php?t=api&data=...",
+        "width": 300,
+        "height": 250,
+        "media": "html_banner",
+        "variation_fields": [...]
+      }
+    }
+  ]
+}`}</code></pre>
+
+        <h4>Exemplo de Resposta - Video Banner</h4>
+        <pre><code>{`{
+  "zones": [
+    {
+      "idzone": 15,
+      "type": "banner",
+      "data": {
+        "url": "http://main.bankmidia.com.br/click.php?data=...",
+        "impression": "http://syndication.bankmidia.com.br/cimp.php?t=api&data=...",
+        "video": "http://static.bankmidia.com.br/library/256238/906f02361f3cd12043514304c777ed489599f637.mp4",
+        "width": 300,
+        "height": 250,
+        "media": "video_banner",
+        "variation_fields": [...]
+      }
+    }
+  ]
+}`}</code></pre>
+
+        <h4>Como Registrar Impressões</h4>
+        <p>
+          Para registrar uma impressão, você deve fazer uma requisição GET para a URL fornecida no campo <code>impression</code>. A melhor forma de fazer isso é:
+        </p>
+        <pre><code>{`<!-- Adicione esta tag onde o anúncio for exibido -->
+<img src="URL_DO_IMPRESSION_TRACKER" width="0" height="0" style="display:none;" />`}</code></pre>
+
         <h3>Outros Endpoints</h3>
         <ul>
           <li><strong>GET /collections</strong> - Listar coleções e tipos de anúncios</li>
