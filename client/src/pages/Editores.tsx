@@ -44,7 +44,13 @@ export default function Editores() {
         <p>
           Permitindo pagamento flexível em muitos formatos diferentes. Você pode escolher receber pagamentos através de:
         </p>
-        <ul>\n          <li>Transferência bancária</li>\n          <li>PayPal</li>\n          <li>Cheque</li>\n          <li>Criptomoedas</li>\n          <li>Outros métodos (conforme disponibilidade)</li>\n        </ul>
+        <ul>
+          <li>Transferência bancária</li>
+          <li>PayPal</li>
+          <li>Cheque</li>
+          <li>Criptomoedas</li>
+          <li>Outros métodos (conforme disponibilidade)</li>
+        </ul>
 
         <h3>Relatórios em Tempo Real</h3>
         <p>
