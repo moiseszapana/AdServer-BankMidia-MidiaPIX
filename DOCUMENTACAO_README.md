@@ -182,7 +182,7 @@ Os arquivos compilados estarão em `dist/public/`.
 
 ---
 
-## Hospedagem no Apache
+## Hospedagem no Apache (AlmaLinux)
 
 ### Arquivos para Hospedagem
 
@@ -191,15 +191,90 @@ Os arquivos prontos para hospedagem estão em:
 /home/ubuntu/bankmidia_docs/dist/public/
 ```
 
-### Configuração Mínima
+### Instalação no AlmaLinux
 
-1. Copie os arquivos para o DocumentRoot do Apache
-2. Certifique-se de que o módulo `mod_rewrite` está habilitado
-3. O arquivo `.htaccess` já está configurado para SPA routing
+#### 1. Instalar Apache
+```bash
+sudo dnf update -y
+sudo dnf install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+```
+
+#### 2. Configurar Firewall
+```bash
+sudo firewall-cmd --permanent --add-service=http
+sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --reload
+```
+
+#### 3. Preparar Diretório
+```bash
+sudo mkdir -p /var/www/html/bankmidia-docs
+sudo chown -R apache:apache /var/www/html/bankmidia-docs
+sudo chmod -R 755 /var/www/html/bankmidia-docs
+```
+
+#### 4. Copiar Arquivos
+```bash
+sudo cp -r /home/ubuntu/bankmidia_docs/dist/public/* /var/www/html/bankmidia-docs/
+sudo chown -R apache:apache /var/www/html/bankmidia-docs
+```
+
+#### 5. Configurar VirtualHost
+Crie o arquivo `/etc/httpd/conf.d/bankmidia-docs.conf`:
+```apache
+<VirtualHost *:80>
+    ServerName docs.bankmidia.com.br
+    ServerAlias www.docs.bankmidia.com.br
+    DocumentRoot /var/www/html/bankmidia-docs
+
+    <Directory /var/www/html/bankmidia-docs>
+        Options -Indexes +FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog /var/log/httpd/bankmidia-docs-error.log
+    CustomLog /var/log/httpd/bankmidia-docs-access.log combined
+</VirtualHost>
+```
+
+#### 6. Habilitar mod_rewrite
+```bash
+sudo dnf install mod_ssl -y
+sudo systemctl restart httpd
+```
+
+#### 7. Configurar SELinux (se habilitado)
+```bash
+sudo setsebool -P httpd_can_network_connect 1
+sudo chcon -R -t httpd_sys_content_t /var/www/html/bankmidia-docs
+```
+
+#### 8. Testar Configuração
+```bash
+sudo httpd -t
+sudo systemctl restart httpd
+```
+
+### Configuração HTTPS/SSL com Let's Encrypt
+
+```bash
+# Instalar Certbot
+sudo dnf install certbot python3-certbot-apache -y
+
+# Obter certificado SSL
+sudo certbot --apache -d docs.bankmidia.com.br -d www.docs.bankmidia.com.br
+
+# Renovação automática
+sudo systemctl enable certbot-renew.timer
+sudo systemctl start certbot-renew.timer
+```
 
 ### Instruções Detalhadas
 
-Consulte o arquivo `GUIA_INSTALACAO_APACHE.md` para instruções completas de instalação e configuração.
+Consulte o arquivo `INSTALACAO_APACHE_LINUX.md` para instruções completas de instalação e configuração.
 
 ---
 
