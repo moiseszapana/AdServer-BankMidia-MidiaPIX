@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Language } from '@/lib/translations';
 
 interface LanguageContextType {
@@ -6,11 +6,11 @@ interface LanguageContextType {
   changeLanguage: (lang: Language) => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | null>(null);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>('pt');
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Carregar idioma do localStorage
@@ -28,17 +28,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setLanguage('pt');
       }
     }
-    setIsInitialized(true);
+    setMounted(true);
   }, []);
 
   const changeLanguage = (lang: Language) => {
     setLanguage(lang);
     localStorage.setItem('language', lang);
   };
-
-  if (!isInitialized) {
-    return <div>{children}</div>;
-  }
 
   return (
     <LanguageContext.Provider value={{ language, changeLanguage }}>
@@ -47,10 +43,11 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function useLanguage() {
+export function useLanguage(): LanguageContextType {
   const context = useContext(LanguageContext);
-  if (context === undefined) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+  if (!context) {
+    // Retornar valor padrão se o contexto não estiver disponível
+    return { language: 'pt', changeLanguage: () => {} };
   }
   return context;
 }
