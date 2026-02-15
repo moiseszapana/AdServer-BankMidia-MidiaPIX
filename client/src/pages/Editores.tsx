@@ -92,18 +92,6 @@ export default function Editores() {
           <li>Visualizar estatísticas por site e zona</li>
         </ul>
 
-        <h3>Pagamentos</h3>
-        <p>
-          É onde você monitora e gerencia os pagamentos para seus sites e zonas de anúncios. Aqui você pode:
-        </p>
-        <ul>
-          <li>Visualizar histórico de pagamentos</li>
-          <li>Configurar método de pagamento</li>
-          <li>Acompanhar saldo disponível</li>
-          <li>Solicitar pagamentos</li>
-          <li>Visualizar extratos detalhados</li>
-        </ul>
-
         <h3>Neverblock</h3>
         <p>
           Solução proprietária de circunvenção de bloqueador de anúncios do BankMidia/MidiaPix. Ajuda a maximizar suas receitas instantaneamente. Garante que seus anúncios sejam exibidos, mesmo que um usuário tenha software de bloqueio de anúncios instalado. Com o Neverblock você pode:
