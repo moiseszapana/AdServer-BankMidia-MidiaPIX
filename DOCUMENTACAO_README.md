@@ -54,11 +54,6 @@ bankmidia_docs/
 │   │   ├── assets/                          # CSS e JavaScript compilados
 │   │   └── .htaccess                        # Configuração Apache
 │   └── index.js                             # Servidor compilado
-├── .manus-logs/                             # Logs de desenvolvimento
-│   ├── devserver.log                        # Logs do servidor Vite
-│   ├── browserConsole.log                   # Console do navegador
-│   ├── networkRequests.log                  # Requisições HTTP
-│   └── sessionReplay.log                    # Eventos de interação
 ├── package.json                             # Dependências e scripts
 ├── tsconfig.json                            # Configuração TypeScript
 ├── vite.config.ts                           # Configuração Vite
