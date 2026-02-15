@@ -33,7 +33,7 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
                 B
               </div>
-              <span>BankMidia Docs</span>
+              <span>BankMidia/MidiaPix AdServer</span>
             </a>
           </Link>
           
