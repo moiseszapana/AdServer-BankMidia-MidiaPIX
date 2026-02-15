@@ -17,6 +17,7 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
     { href: '/anunciantes', label: 'Guia para Anunciantes' },
     { href: '/editores', label: 'Guia para Editores' },
     { href: '/api', label: 'Manual da API' },
+    { href: '/api-tester', label: 'Testador da API' },
   ];
 
   return (

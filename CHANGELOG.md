@@ -5,6 +5,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2025-03-15
+
+### Added
+- ✨ Página Testador da API com formulário interativo
+- ✨ Autenticação com token Bearer
+- ✨ Consulta de campanhas em tempo real (endpoint /campaigns)
+- ✨ Consulta de zonas de anúncios em tempo real (endpoint /zones)
+- ✨ Tabelas interativas com dados da API
+- ✨ Tratamento de erros e validação de token
+- ✨ Indicadores visuais de status (ativo, pausado, deletado)
+- ✨ Interface responsiva para mobile e desktop
+
+### Changed
+- 📝 Versionamento atualizado para v1.1.0
+- 📝 Data da atualização: 15 de março de 2025
+
+---
+
 ## [1.0.0] - 2025-03-15
 
 ### Added
@@ -81,14 +99,14 @@ Esta é a primeira versão estável da Documentação BankMidia/MidiaPix. A docu
 
 ## Versões Futuras
 
-### Planejado para v1.1.0
+### Planejado para v1.2.0
 - [ ] Exemplos de código em múltiplas linguagens (cURL, Python, JavaScript, PHP)
 - [ ] Documentação de Webhooks
 - [ ] Guia de Rate Limiting
 - [ ] Seção de FAQ
 - [ ] Formulário de feedback
 
-### Planejado para v1.2.0
+### Planejado para v1.3.0
 - [ ] Busca full-text
 - [ ] Dark mode
 - [ ] Suporte a múltiplos idiomas
