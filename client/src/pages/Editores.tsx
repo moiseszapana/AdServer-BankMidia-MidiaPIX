@@ -40,18 +40,6 @@ export default function Editores() {
           <li><strong>Rich Media:</strong> Anúncios interativos e animados</li>
         </ul>
 
-        <h3>Múltiplas Opções de Pagamento</h3>
-        <p>
-          Permitindo pagamento flexível em muitos formatos diferentes. Você pode escolher receber pagamentos através de:
-        </p>
-        <ul>
-          <li>Transferência bancária</li>
-          <li>PayPal</li>
-          <li>Cheque</li>
-          <li>Criptomoedas</li>
-          <li>Outros métodos (conforme disponibilidade)</li>
-        </ul>
-
         <h3>Relatórios em Tempo Real</h3>
         <p>
           Que permitem que você veja suas estatísticas a qualquer momento para uma avaliação atualizada do desempenho de seu site/zona de anúncios. Os relatórios incluem:
