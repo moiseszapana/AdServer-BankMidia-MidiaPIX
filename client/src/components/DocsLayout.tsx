@@ -16,6 +16,7 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
     { href: '/introducao', label: 'Introdução Geral' },
     { href: '/anunciantes', label: 'Guia para Anunciantes' },
     { href: '/editores', label: 'Guia para Editores' },
+    { href: '/api', label: 'Manual da API' },
   ];
 
   return (
