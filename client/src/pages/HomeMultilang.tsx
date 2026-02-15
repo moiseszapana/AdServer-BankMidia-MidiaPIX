@@ -1,7 +1,7 @@
 import { Link } from 'wouter';
 import { ArrowRight, BookOpen, Users, BarChart3 } from 'lucide-react';
 import DocsLayout from '@/components/DocsLayout';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/lib/translations';
 
 export default function Home() {

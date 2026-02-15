@@ -1,5 +1,5 @@
 import { Github, ExternalLink, Mail } from 'lucide-react';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { getTranslation } from '@/lib/translations';
 
 export default function Footer() {

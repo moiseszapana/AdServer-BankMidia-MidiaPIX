@@ -3,7 +3,7 @@ import { Menu, X } from 'lucide-react';
 import { Link } from 'wouter';
 import Footer from './Footer';
 import LanguageSwitcher from './LanguageSwitcher';
-import { useLanguage } from '@/hooks/useLanguage';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface DocsLayoutProps {
   children: React.ReactNode;
@@ -30,9 +30,7 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
         <div className="container flex items-center justify-between h-16">
           <Link href="/">
             <a className="flex items-center gap-2 font-bold text-xl text-primary">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
-                B
-              </div>
+              <img src="/logo.png" alt="BankMidia/MidiaPix" className="w-8 h-8" />
               <span>BankMidia/MidiaPix AdServer</span>
             </a>
           </Link>
