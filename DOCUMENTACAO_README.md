@@ -309,11 +309,32 @@ Consulte o arquivo `INSTALACAO_APACHE_LINUX.md` para instruções completas.
 
 ## Manutenção
 
-### Atualizar Documentação
+### Atualização Automática do GitHub
+
+Use o script `update.sh` para atualizar automaticamente do GitHub:
+
+```bash
+# No diretório do projeto
+./update.sh
+```
+
+O script irá:
+1. Verificar atualizações no GitHub
+2. Baixar código atualizado
+3. Instalar dependências
+4. Compilar o projeto
+5. Reiniciar o servidor
+
+**Primeira vez:** Torne o script executável:
+```bash
+chmod +x update.sh
+```
+
+### Atualizar Documentação Manualmente
 
 1. Edite os arquivos em `client/src/pages/`
 2. Execute `pnpm build`
-3. Copie os arquivos de `dist/public/` para o servidor Apache
+3. Reinicie o servidor no painel CWP
 
 ### Monitorar Performance
 

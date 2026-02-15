@@ -291,6 +291,59 @@ pm2 restart bankmidia_docs --max-memory-restart 512M
 
 ---
 
+## Atualização Automática
+
+### Script de Atualização
+
+O projeto inclui um script `update.sh` que automatiza todo o processo de atualização:
+
+```bash
+# Conectar via SSH
+ssh usuario@seu-servidor
+
+# Ir para o diretório do projeto
+cd /home/usuario/bankmidia_docs
+
+# Executar script de atualização
+./update.sh
+```
+
+### O que o script faz:
+
+1. **Verifica atualizações** no repositório GitHub
+2. **Baixa código** atualizado (`git pull`)
+3. **Instala dependências** (`pnpm install`)
+4. **Compila projeto** (`pnpm build`)
+5. **Reinicia servidor** (PM2 ou manual)
+
+### Primeira Execução
+
+Torne o script executável:
+
+```bash
+chmod +x update.sh
+```
+
+### Atualização Manual
+
+Se preferir atualizar manualmente:
+
+```bash
+# Baixar atualizações
+git pull origin main
+
+# Instalar dependências
+pnpm install
+
+# Compilar
+pnpm build
+
+# Reiniciar no painel CWP
+# Node.js Selector > Restart
+```
+
+---
+
 ## Comandos Úteis
 
 ```bash

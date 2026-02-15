@@ -16,4 +16,11 @@
 - [x] Incluir exemplos de resposta JSON (Image Banner, HTML Banner, Video Banner)
 - [x] Documentar campos da resposta (zones, data, variation_fields)
 - [x] Compilar projeto
+- [x] Publicar no GitHub
+
+## Criar Script de Atualização Automática
+
+- [x] Criar script update.sh para atualizar do GitHub
+- [x] Adicionar instruções no DOCUMENTACAO_README.md
+- [x] Adicionar instruções no INSTALACAO_CWP.md
 - [ ] Publicar no GitHub
