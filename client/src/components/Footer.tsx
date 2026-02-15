@@ -1,10 +1,15 @@
 import { Github, ExternalLink, Mail } from 'lucide-react';
+import { useLanguage } from '@/hooks/useLanguage';
+import { getTranslation } from '@/lib/translations';
 
 export default function Footer() {
-  const version = "1.1.0";
+  const version = "1.2.0";
   const author = "moiseszapana";
   const email = "moiseszapana@bankmidia.com.br";
   const repositoryUrl = "https://github.com/moiseszapana/BankMidia-MidiaPIX";
+  
+  const { language } = useLanguage();
+  const t = (path: string) => getTranslation(language, path);
 
   return (
     <footer className="bg-sidebar border-t border-sidebar-border mt-16">
@@ -12,34 +17,34 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Sobre */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Sobre</h3>
+            <h3 className="font-semibold text-foreground mb-4">{t('footer.about')}</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Documentação oficial do AdServer BankMidia/MidiaPix para gerenciamento de campanhas publicitárias online.
+              {t('footer.aboutDesc')}
             </p>
           </div>
 
           {/* Links Rápidos */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Links Rápidos</h3>
+            <h3 className="font-semibold text-foreground mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <a href="/" className="text-primary hover:underline">
-                  Página Inicial
+                  {t('nav.inicio')}
                 </a>
               </li>
               <li>
                 <a href="/introducao" className="text-primary hover:underline">
-                  Introdução Geral
+                  {t('nav.introducao')}
                 </a>
               </li>
               <li>
                 <a href="/anunciantes" className="text-primary hover:underline">
-                  Guia para Anunciantes
+                  {t('nav.anunciantes')}
                 </a>
               </li>
               <li>
                 <a href="/editores" className="text-primary hover:underline">
-                  Guia para Editores
+                  {t('nav.editores')}
                 </a>
               </li>
             </ul>
@@ -47,7 +52,7 @@ export default function Footer() {
 
           {/* Repositório */}
           <div>
-            <h3 className="font-semibold text-foreground mb-4">Repositório</h3>
+            <h3 className="font-semibold text-foreground mb-4">{t('footer.repository')}</h3>
             <a
               href={repositoryUrl}
               target="_blank"
@@ -55,7 +60,7 @@ export default function Footer() {
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
             >
               <Github size={18} />
-              Ver no GitHub
+              {t('footer.viewGithub')}
               <ExternalLink size={14} />
             </a>
           </div>
@@ -68,13 +73,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-sm text-muted-foreground">
             <p className="mb-2">
-              <strong>Versão:</strong> {version}
+              <strong>{t('footer.version')}:</strong> {version}
             </p>
           </div>
 
           <div className="text-sm text-muted-foreground">
             <p className="mb-2">
-              <strong>Autor:</strong>{' '}
+              <strong>{t('footer.author')}:</strong>{' '}
               <a
                 href={`https://github.com/${author}`}
                 target="_blank"
@@ -97,10 +102,10 @@ export default function Footer() {
 
           <div className="text-sm text-muted-foreground text-right">
             <p className="mb-2">
-              Desenvolvido para <strong>BankMidia/MidiaPix</strong>
+              {t('footer.developed')} <strong>BankMidia/MidiaPix</strong>
             </p>
             <p>
-              © 2025 BankMidia. Todos os direitos reservados.
+              {t('footer.rights')}
             </p>
           </div>
         </div>
@@ -114,7 +119,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              Release Notes v{version}
+              {t('footer.releaseNotes')} v{version}
             </a>
             {' '} | {' '}
             <a
@@ -123,7 +128,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              Documentação do Projeto
+              {t('footer.projectDocs')}
             </a>
           </p>
         </div>

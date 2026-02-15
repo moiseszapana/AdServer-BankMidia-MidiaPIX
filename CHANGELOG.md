@@ -5,6 +5,24 @@ Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 O formato é baseado em [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 e este projeto segue [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-03-15
+
+### Added
+- ✨ Suporte a múltiplos idiomas (Português, Inglês, Espanhol)
+- ✨ Seletor de idioma no header
+- ✨ Sistema de internacionalização (i18n) completo
+- ✨ Detecção automática de idioma do navegador
+- ✨ Persistência de preferência de idioma em localStorage
+- ✨ Traduções completas para todas as páginas
+- ✨ Interface responsiva com suporte a 3 idiomas
+
+### Changed
+- 📝 Versionamento atualizado para v1.2.0
+- 📝 Data da atualização: 15 de março de 2025
+- 📝 Footer agora suporta múltiplos idiomas
+
+---
+
 ## [1.1.0] - 2025-03-15
 
 ### Added

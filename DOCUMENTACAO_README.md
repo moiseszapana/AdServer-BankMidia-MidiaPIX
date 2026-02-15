@@ -277,7 +277,7 @@ Esta documentação é propriedade do BankMidia e é fornecida como-é para fins
 
 ---
 
-**Versão:** 1.1.0  
+**Versão:** 1.2.0  
 **Data:** 15 de março de 2025  
 **Autor:** moiseszapana (moiseszapana@bankmidia.com.br)  
 **Repositório:** https://github.com/moiseszapana/BankMidia-MidiaPIX  
