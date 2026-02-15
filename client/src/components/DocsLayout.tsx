@@ -18,6 +18,7 @@ export default function DocsLayout({ children, currentPage }: DocsLayoutProps) {
     { href: '/editores', label: 'Guia para Editores' },
     { href: '/api', label: 'Manual da API' },
     { href: '/api-tester', label: 'Testador da API' },
+    { href: '/conformidade', label: 'Conformidade LGPD/GDPR' },
   ];
 
   return (

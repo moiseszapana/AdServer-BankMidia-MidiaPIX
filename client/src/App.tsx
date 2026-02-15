@@ -10,6 +10,7 @@ import APITester from "./pages/APITester";
 import Introducao from "./pages/Introducao";
 import Anunciantes from "./pages/Anunciantes";
 import Editores from "./pages/Editores";
+import Conformidade from "./pages/Conformidade";
 
 function Router() {
   return (
@@ -21,6 +22,7 @@ function Router() {
       <Route path={"/editores"} component={Editores} />
       <Route path={"/api"} component={API} />
       <Route path={"/api-tester"} component={APITester} />
+      <Route path={"/conformidade"} component={Conformidade} />
 
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
