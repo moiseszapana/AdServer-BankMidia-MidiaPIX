@@ -10,6 +10,28 @@ export default function API() {
           <p>
             Este documento apresenta uma visão geral completa de como interagir e utilizar a <strong>API BankMidia/MidiaPix versão 2.0</strong>. A API fornece acesso programático a todas as funcionalidades da plataforma, permitindo que você integre o BankMidia/MidiaPix em suas aplicações.
           </p>
+          
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 my-6">
+            <h3 className="text-lg font-semibold text-amber-900 mb-3 flex items-center gap-2">
+              ⚠️ Documentação Técnica para Usuários
+            </h3>
+            <p className="text-amber-800 mb-3">
+              Esta é uma <strong>documentação técnica</strong> destinada exclusivamente a <strong>Anunciantes e Editores</strong> que já utilizam a plataforma BankMidia/MidiaPix.
+            </p>
+            <div className="bg-white rounded-lg p-4 border border-amber-300">
+              <p className="text-sm font-semibold text-amber-900 mb-2">
+                🔑 Requisitos para Utilizar a API:
+              </p>
+              <ul className="text-sm text-amber-800 space-y-1 ml-4">
+                <li>• <strong>Username</strong>: Seu nome de usuário na plataforma</li>
+                <li>• <strong>Password</strong>: Sua senha de acesso</li>
+                <li>• <strong>Token de Acesso à API</strong>: Token fornecido pela plataforma</li>
+              </ul>
+              <p className="text-sm text-amber-800 mt-3">
+                Essas credenciais são fornecidas exclusivamente para usuários cadastrados. Se você ainda não possui acesso, entre em contato com nossa equipe de suporte.
+              </p>
+            </div>
+          </div>
         </section>
 
         <h2>Visão Geral da API</h2>

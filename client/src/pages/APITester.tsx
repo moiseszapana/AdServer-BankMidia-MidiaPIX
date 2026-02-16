@@ -236,9 +236,27 @@ export default function APITester() {
       <article className="prose max-w-4xl">
         <h1>Testador da API BankMidia/MidiaPix</h1>
 
-        <p>
-          Bem-vindo ao testador interativo da API BankMidia/MidiaPix! Esta ferramenta permite que você teste os endpoints da API diretamente no navegador. Para começar, você precisa fornecer um token de autenticação válido.
-        </p>
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6 mb-6">
+          <p className="text-lg text-gray-800 mb-4">
+            Bem-vindo ao <strong>Testador Interativo da API BankMidia/MidiaPix</strong>! Esta ferramenta permite que você teste os endpoints da API diretamente no navegador de forma rápida e segura.
+          </p>
+          <div className="bg-white rounded-lg p-4 border border-blue-300">
+            <p className="text-sm font-semibold text-blue-900 mb-2">
+              🔑 Credenciais Necessárias:
+            </p>
+            <p className="text-sm text-blue-800 mb-3">
+              Para utilizar este testador, você precisa das seguintes credenciais fornecidas pela plataforma BankMidia/MidiaPix:
+            </p>
+            <ul className="text-sm text-blue-800 space-y-1 ml-4">
+              <li>• <strong>Username</strong>: Seu nome de usuário</li>
+              <li>• <strong>Password</strong>: Sua senha de acesso</li>
+              <li>• <strong>Token de Acesso à API</strong>: Token fornecido pela plataforma</li>
+            </ul>
+            <p className="text-sm text-blue-700 mt-3 italic">
+              Essas credenciais são exclusivas para usuários cadastrados (Anunciantes e Editores).
+            </p>
+          </div>
+        </div>
 
         {/* Seção de Autenticação */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 my-6">

@@ -45,3 +45,11 @@
 - [x] Criar tabs para alternar entre login e token manual
 - [x] Compilar projeto
 - [x] Publicar no GitHub
+
+## Atualizar Introdução da Documentação
+
+- [x] Atualizar página Home.tsx com introdução acolhedora
+- [x] Atualizar página API.tsx explicando requisitos de acesso
+- [x] Atualizar página APITester.tsx com aviso sobre credenciais
+- [x] Compilar projeto
+- [ ] Publicar no GitHub

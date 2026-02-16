@@ -12,10 +12,21 @@ export default function Home() {
             Documentação BankMidia/MidiaPix
           </h1>
           <p className="text-lg text-muted-foreground mb-6 max-w-2xl">
-            Bem-vindo à documentação completa do AdServer BankMidia/MidiaPix. Encontre guias detalhados, tutoriais e referências para aproveitar ao máximo nossa plataforma de publicidade online.
+            Bem-vindo à documentação técnica do AdServer BankMidia/MidiaPix! Este guia foi criado especialmente para você, usuário da nossa plataforma, seja como Anunciante ou Editor.
           </p>
+          <p className="text-muted-foreground mb-4">
+            Aqui você encontrará tudo que precisa para integrar e utilizar nossa API de forma eficiente, incluindo guias detalhados, exemplos práticos e referências completas dos endpoints disponíveis.
+          </p>
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+            <p className="text-sm text-blue-900 font-medium mb-2">
+              🔑 <strong>Requisitos para Acesso à API:</strong>
+            </p>
+            <p className="text-sm text-blue-800">
+              Para testar e utilizar a API, você precisará de: <strong>Username</strong>, <strong>Password</strong> e <strong>Token de Acesso à API</strong>. Essas credenciais são fornecidas exclusivamente para usuários cadastrados na plataforma BankMidia/MidiaPix.
+            </p>
+          </div>
           <p className="text-muted-foreground mb-8">
-            O BankMidia/MidiaPix é uma plataforma robusta que oferece soluções completas para Anunciantes e Editores gerenciarem suas campanhas publicitárias com eficiência.
+            Se você ainda não possui acesso, entre em contato com nossa equipe de suporte para obter suas credenciais.
           </p>
         </div>
       </div>
