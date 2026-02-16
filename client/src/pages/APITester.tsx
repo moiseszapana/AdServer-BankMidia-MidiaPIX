@@ -5,6 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
 export default function APITester() {
+  // Login states
+  const [loginMode, setLoginMode] = useState<'credentials' | 'token'>('credentials');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [apiToken, setApiToken] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showApiToken, setShowApiToken] = useState(false);
+  
+  // Token states
   const [token, setToken] = useState('');
   const [showToken, setShowToken] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -21,6 +30,78 @@ export default function APITester() {
   const [zones, setZones] = useState<any[]>([]);
   const [zonesLoading, setZonesLoading] = useState(false);
   const [zonesError, setZonesError] = useState('');
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setSuccess('');
+
+    if (!username.trim() || !password.trim() || !apiToken.trim()) {
+      setError('Por favor, preencha todos os campos (username, password e api_token)');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.bankmidia.com.br/v2/login', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiToken}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          username: username.trim(),
+          password: password.trim(),
+          api_token: apiToken.trim(),
+        }),
+      });
+
+      console.log('Login - Status da resposta:', response.status);
+      console.log('Login - Headers da resposta:', Object.fromEntries(response.headers.entries()));
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Login - Dados da resposta:', data);
+        
+        // Extrair Bearer token da resposta
+        const bearerToken = data.token || data.access_token || data.bearer_token;
+        
+        if (bearerToken) {
+          setToken(bearerToken);
+          setIsAuthenticated(true);
+          setSuccess(`✓ Login realizado com sucesso! Bearer token gerado.`);
+        } else {
+          setError('Login bem-sucedido, mas nenhum token foi retornado. Resposta: ' + JSON.stringify(data));
+        }
+      } else {
+        let errorDetails = '';
+        try {
+          const errorData = await response.json();
+          console.log('Login - Erro detalhado:', errorData);
+          errorDetails = errorData.message || errorData.error || JSON.stringify(errorData);
+        } catch {
+          errorDetails = await response.text();
+        }
+
+        if (response.status === 401) {
+          setError(`Credenciais inválidas. Verifique username, password e api_token. Detalhes: ${errorDetails}`);
+        } else {
+          setError(`Erro no login: ${response.status} ${response.statusText}. Detalhes: ${errorDetails}`);
+        }
+      }
+    } catch (err: any) {
+      console.error('Login - Erro na requisição:', err);
+      if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
+        setError('Erro de CORS ou conexão bloqueada. A API pode não permitir requisições do navegador.');
+      } else {
+        setError(`Erro ao conectar com a API: ${err.message || 'Verifique sua conexão e tente novamente.'}`);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAuthenticate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -140,6 +221,9 @@ export default function APITester() {
 
   const handleLogout = () => {
     setToken('');
+    setUsername('');
+    setPassword('');
+    setApiToken('');
     setIsAuthenticated(false);
     setCampaigns([]);
     setZones([]);
@@ -161,69 +245,181 @@ export default function APITester() {
           <h2 className="text-xl font-semibold text-blue-900 mb-4">🔐 Autenticação</h2>
 
           {!isAuthenticated ? (
-            <form onSubmit={handleAuthenticate} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Token de Autenticação
-                </label>
-                <div className="flex gap-2">
-                  <div className="flex-1 relative">
+            <>
+              {/* Tabs para escolher modo de autenticação */}
+              <div className="flex gap-2 mb-4">
+                <button
+                  type="button"
+                  onClick={() => setLoginMode('credentials')}
+                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+                    loginMode === 'credentials'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }`}
+                >
+                  🔑 Login com Credenciais
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLoginMode('token')}
+                  className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
+                    loginMode === 'token'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                  }`}
+                >
+                  🎫 Token Manual
+                </button>
+              </div>
+
+              {/* Formulário de Login com Credenciais */}
+              {loginMode === 'credentials' && (
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Username
+                    </label>
                     <input
-                      type={showToken ? 'text' : 'password'}
-                      value={token}
-                      onChange={(e) => setToken(e.target.value)}
-                      placeholder="Cole seu token Bearer aqui"
+                      type="text"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="Seu username"
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
-                    <button
-                      type="button"
-                      onClick={() => setShowToken(!showToken)}
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                    >
-                      {showToken ? <EyeOff size={20} /> : <Eye size={20} />}
-                    </button>
                   </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Sua senha"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      API Token
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showApiToken ? 'text' : 'password'}
+                        value={apiToken}
+                        onChange={(e) => setApiToken(e.target.value)}
+                        placeholder="Seu API token"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowApiToken(!showApiToken)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showApiToken ? <EyeOff size={20} /> : <Eye size={20} />}
+                      </button>
+                    </div>
+                  </div>
+
                   <Button
                     type="submit"
                     disabled={loading}
-                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                   >
                     {loading ? (
                       <>
                         <Loader2 size={18} className="mr-2 animate-spin" />
-                        Autenticando...
+                        Fazendo login...
                       </>
                     ) : (
-                      'Autenticar'
+                      'Fazer Login'
                     )}
                   </Button>
-                </div>
-              </div>
 
-              <p className="text-sm text-gray-600">
-                💡 <strong>Como obter seu token:</strong> Faça login na sua conta BankMidia/MidiaPix e acesse as configurações de API para gerar um token de autenticação.
-              </p>
+                  <p className="text-sm text-gray-600">
+                    💡 <strong>Como funciona:</strong> Insira suas credenciais (username, password e api_token). O sistema fará login automaticamente e gerará o Bearer token para você.
+                  </p>
+                </form>
+              )}
 
-              <div className="mt-4 pt-4 border-t border-blue-200">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (token.trim()) {
-                      setIsAuthenticated(true);
-                      setSuccess('✓ Token salvo! Você pode testar os endpoints abaixo.');
-                    } else {
-                      setError('Por favor, insira um token antes de pular a validação.');
-                    }
-                  }}
-                  className="text-sm text-blue-600 hover:text-blue-800 underline"
-                >
-                  ⚠️ Pular validação e usar token diretamente
-                </button>
-                <p className="text-xs text-gray-500 mt-1">
-                  Use esta opção se a validação automática falhar por problemas de CORS ou endpoint.
-                </p>
-              </div>
-            </form>
+              {/* Formulário de Token Manual */}
+              {loginMode === 'token' && (
+                <form onSubmit={handleAuthenticate} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Bearer Token
+                    </label>
+                    <div className="flex gap-2">
+                      <div className="flex-1 relative">
+                        <input
+                          type={showToken ? 'text' : 'password'}
+                          value={token}
+                          onChange={(e) => setToken(e.target.value)}
+                          placeholder="Cole seu Bearer token aqui"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setShowToken(!showToken)}
+                          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        >
+                          {showToken ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                      </div>
+                      <Button
+                        type="submit"
+                        disabled={loading}
+                        className="bg-blue-600 hover:bg-blue-700 text-white"
+                      >
+                        {loading ? (
+                          <>
+                            <Loader2 size={18} className="mr-2 animate-spin" />
+                            Validando...
+                          </>
+                        ) : (
+                          'Validar'
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-gray-600">
+                    💡 <strong>Modo avançado:</strong> Se você já possui um Bearer token, cole-o aqui diretamente.
+                  </p>
+
+                  <div className="mt-4 pt-4 border-t border-blue-200">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        if (token.trim()) {
+                          setIsAuthenticated(true);
+                          setSuccess('✓ Token salvo! Você pode testar os endpoints abaixo.');
+                        } else {
+                          setError('Por favor, insira um token antes de pular a validação.');
+                        }
+                      }}
+                      className="text-sm text-blue-600 hover:text-blue-800 underline"
+                    >
+                      ⚠️ Pular validação e usar token diretamente
+                    </button>
+                    <p className="text-xs text-gray-500 mt-1">
+                      Use esta opção se a validação automática falhar por problemas de CORS.
+                    </p>
+                  </div>
+                </form>
+              )}
+            </>
           ) : (
             <div className="flex items-center justify-between bg-green-50 border border-green-200 rounded-lg p-4">
               <div className="flex items-center gap-2">

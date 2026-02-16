@@ -33,4 +33,15 @@
 - [x] Adicionar opção de pular validação
 - [x] Melhorar tratamento de erros (401, 403, 404, CORS)
 - [x] Compilar projeto
+- [x] Publicar no GitHub
+
+## Adicionar Formulário de Login no APITester
+
+- [x] Adicionar campos de username, password e api_token
+- [x] Implementar chamada POST para /v2/login
+- [x] Extrair Bearer token da resposta
+- [x] Salvar token automaticamente após login
+- [x] Adicionar opção de usar token manual (modo avançado)
+- [x] Criar tabs para alternar entre login e token manual
+- [x] Compilar projeto
 - [ ] Publicar no GitHub
