@@ -44,4 +44,4 @@
 - [x] Adicionar opção de usar token manual (modo avançado)
 - [x] Criar tabs para alternar entre login e token manual
 - [x] Compilar projeto
-- [ ] Publicar no GitHub
+- [x] Publicar no GitHub
