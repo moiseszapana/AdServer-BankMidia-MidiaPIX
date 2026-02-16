@@ -35,14 +35,14 @@ if [ "$CURRENT_NODE_VERSION" -lt "$REQUIRED_NODE_VERSION" ]; then
     if [ -s "$HOME/.nvm/nvm.sh" ]; then
         echo "Atualizando Node.js via NVM..."
         source "$HOME/.nvm/nvm.sh"
-        nvm install 22
-        nvm use 22
+        nvm install node  # Instala a versão mais recente
+        nvm use node
         echo -e "${GREEN}✓${NC} Node.js atualizado para $(node -v)!"
     else
         echo -e "${RED}✗${NC} NVM não encontrado. Instale manualmente:"
         echo "   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
         echo "   source ~/.bashrc"
-        echo "   nvm install 22"
+        echo "   nvm install node  # Instala a versão mais recente"
         exit 1
     fi
 else

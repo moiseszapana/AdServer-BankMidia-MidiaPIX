@@ -59,4 +59,10 @@
 - [x] Adicionar verificação de versão do Node.js
 - [x] Adicionar atualização automática via NVM (se disponível)
 - [x] Atualizar numeração das etapas (1/6 a 6/6)
+- [x] Publicar no GitHub
+
+## Modificar update.sh para Versão Mais Recente do Node.js
+
+- [x] Alterar script para sempre instalar versão mais recente (node) ao invés de v22 fixo
+- [x] Atualizar instruções manuais também
 - [ ] Publicar no GitHub
