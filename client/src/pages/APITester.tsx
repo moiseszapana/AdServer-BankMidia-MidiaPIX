@@ -191,7 +191,17 @@ export default function APITester() {
         console.log('Campanhas - Dados recebidos:', data);
         
         // Tentar diferentes estruturas de resposta
-        const campaignsData = data.result || data.data || data.campaigns || data;
+        let campaignsData = data.result || data.data || data.campaigns || data;
+        
+        // Se é um objeto com IDs como chaves (ex: {"8": {...}, "9": {...}}), converter para array
+        if (typeof campaignsData === 'object' && campaignsData !== null && !Array.isArray(campaignsData)) {
+          // Verificar se as chaves são numéricas (IDs)
+          const keys = Object.keys(campaignsData);
+          if (keys.length > 0 && keys.every(k => !isNaN(Number(k)))) {
+            console.log('Convertendo objeto com IDs como chaves para array');
+            campaignsData = Object.values(campaignsData);
+          }
+        }
         
         if (Array.isArray(campaignsData)) {
           setCampaigns(campaignsData);
@@ -257,7 +267,17 @@ export default function APITester() {
         console.log('Zonas - Dados recebidos:', data);
         
         // Tentar diferentes estruturas de resposta
-        const zonesData = data.result || data.data || data.zones || data;
+        let zonesData = data.result || data.data || data.zones || data;
+        
+        // Se é um objeto com IDs como chaves (ex: {"8": {...}, "9": {...}}), converter para array
+        if (typeof zonesData === 'object' && zonesData !== null && !Array.isArray(zonesData)) {
+          // Verificar se as chaves são numéricas (IDs)
+          const keys = Object.keys(zonesData);
+          if (keys.length > 0 && keys.every(k => !isNaN(Number(k)))) {
+            console.log('Convertendo objeto com IDs como chaves para array');
+            zonesData = Object.values(zonesData);
+          }
+        }
         
         if (Array.isArray(zonesData)) {
           setZones(zonesData);

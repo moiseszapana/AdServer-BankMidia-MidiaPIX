@@ -74,4 +74,11 @@
 - [x] Adicionar suporte a múltiplas estruturas de resposta da API
 - [x] Aplicar mesmas melhorias para fetchZones
 - [x] Compilar projeto
+- [x] Publicar no GitHub
+
+## Corrigir Conversão de Objeto para Array no APITester
+
+- [x] Modificar fetchCampaigns para converter objeto {id: {...}} em array
+- [x] Modificar fetchZones para converter objeto {id: {...}} em array
+- [x] Compilar projeto
 - [ ] Publicar no GitHub
