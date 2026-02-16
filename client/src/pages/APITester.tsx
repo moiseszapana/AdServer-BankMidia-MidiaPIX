@@ -170,24 +170,64 @@ export default function APITester() {
   const fetchCampaigns = async () => {
     setCampaignsLoading(true);
     setCampaignsError('');
+    setCampaigns([]);
 
     try {
+      console.log('Buscando campanhas com token:', token);
       const response = await fetch('https://api.bankmidia.com.br/v2/campaigns?limit=10', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       });
 
+      console.log('Campanhas - Status:', response.status);
+      console.log('Campanhas - Headers:', Object.fromEntries(response.headers.entries()));
+
       if (response.ok) {
         const data = await response.json();
-        setCampaigns(data.result || []);
+        console.log('Campanhas - Dados recebidos:', data);
+        
+        // Tentar diferentes estruturas de resposta
+        const campaignsData = data.result || data.data || data.campaigns || data;
+        
+        if (Array.isArray(campaignsData)) {
+          setCampaigns(campaignsData);
+          if (campaignsData.length === 0) {
+            setCampaignsError('Nenhuma campanha encontrada na sua conta.');
+          }
+        } else if (typeof campaignsData === 'object' && campaignsData !== null) {
+          // Se a resposta é um objeto com array dentro
+          const possibleArrays = Object.values(campaignsData).find(v => Array.isArray(v));
+          if (possibleArrays) {
+            setCampaigns(possibleArrays as any[]);
+          } else {
+            setCampaignsError('Estrutura de resposta inesperada: ' + JSON.stringify(data).substring(0, 200));
+          }
+        } else {
+          setCampaignsError('Formato de resposta inválido. Esperado array, recebido: ' + typeof campaignsData);
+        }
       } else {
-        setCampaignsError(`Erro ao buscar campanhas: ${response.status}`);
+        let errorMsg = `Erro ${response.status}: ${response.statusText}`;
+        try {
+          const errorData = await response.json();
+          console.log('Campanhas - Erro detalhado:', errorData);
+          errorMsg += '. ' + (errorData.message || errorData.error || JSON.stringify(errorData));
+        } catch {
+          const errorText = await response.text();
+          if (errorText) errorMsg += '. ' + errorText;
+        }
+        setCampaignsError(errorMsg);
       }
-    } catch (err) {
-      setCampaignsError('Erro ao conectar com a API');
+    } catch (err: any) {
+      console.error('Campanhas - Erro na requisição:', err);
+      if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
+        setCampaignsError('Erro de CORS ou conexão bloqueada. Verifique se a API permite requisições do navegador.');
+      } else {
+        setCampaignsError(`Erro ao conectar: ${err.message || 'Desconhecido'}`);
+      }
     } finally {
       setCampaignsLoading(false);
     }
@@ -196,24 +236,64 @@ export default function APITester() {
   const fetchZones = async () => {
     setZonesLoading(true);
     setZonesError('');
+    setZones([]);
 
     try {
+      console.log('Buscando zonas com token:', token);
       const response = await fetch('https://api.bankmidia.com.br/v2/zones?limit=10', {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
       });
 
+      console.log('Zonas - Status:', response.status);
+      console.log('Zonas - Headers:', Object.fromEntries(response.headers.entries()));
+
       if (response.ok) {
         const data = await response.json();
-        setZones(data.result || []);
+        console.log('Zonas - Dados recebidos:', data);
+        
+        // Tentar diferentes estruturas de resposta
+        const zonesData = data.result || data.data || data.zones || data;
+        
+        if (Array.isArray(zonesData)) {
+          setZones(zonesData);
+          if (zonesData.length === 0) {
+            setZonesError('Nenhuma zona encontrada na sua conta.');
+          }
+        } else if (typeof zonesData === 'object' && zonesData !== null) {
+          // Se a resposta é um objeto com array dentro
+          const possibleArrays = Object.values(zonesData).find(v => Array.isArray(v));
+          if (possibleArrays) {
+            setZones(possibleArrays as any[]);
+          } else {
+            setZonesError('Estrutura de resposta inesperada: ' + JSON.stringify(data).substring(0, 200));
+          }
+        } else {
+          setZonesError('Formato de resposta inválido. Esperado array, recebido: ' + typeof zonesData);
+        }
       } else {
-        setZonesError(`Erro ao buscar zonas: ${response.status}`);
+        let errorMsg = `Erro ${response.status}: ${response.statusText}`;
+        try {
+          const errorData = await response.json();
+          console.log('Zonas - Erro detalhado:', errorData);
+          errorMsg += '. ' + (errorData.message || errorData.error || JSON.stringify(errorData));
+        } catch {
+          const errorText = await response.text();
+          if (errorText) errorMsg += '. ' + errorText;
+        }
+        setZonesError(errorMsg);
       }
-    } catch (err) {
-      setZonesError('Erro ao conectar com a API');
+    } catch (err: any) {
+      console.error('Zonas - Erro na requisição:', err);
+      if (err.name === 'TypeError' && err.message.includes('Failed to fetch')) {
+        setZonesError('Erro de CORS ou conexão bloqueada. Verifique se a API permite requisições do navegador.');
+      } else {
+        setZonesError(`Erro ao conectar: ${err.message || 'Desconhecido'}`);
+      }
     } finally {
       setZonesLoading(false);
     }

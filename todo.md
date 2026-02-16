@@ -65,4 +65,13 @@
 
 - [x] Alterar script para sempre instalar versão mais recente (node) ao invés de v22 fixo
 - [x] Atualizar instruções manuais também
+- [x] Publicar no GitHub
+
+## Corrigir Consulta de Campanhas no APITester
+
+- [x] Ler APITester.tsx e identificar problema
+- [x] Melhorar tratamento de erros com logs detalhados no console
+- [x] Adicionar suporte a múltiplas estruturas de resposta da API
+- [x] Aplicar mesmas melhorias para fetchZones
+- [x] Compilar projeto
 - [ ] Publicar no GitHub
