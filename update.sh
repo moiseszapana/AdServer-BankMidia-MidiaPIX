@@ -22,7 +22,35 @@ NC='\033[0m' # No Color
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$PROJECT_DIR"
 
-echo -e "${YELLOW}[1/5]${NC} Verificando atualizações no GitHub..."
+echo -e "${YELLOW}[1/6]${NC} Verificando versão do Node.js..."
+
+# Versão mínima requerida
+REQUIRED_NODE_VERSION=18
+CURRENT_NODE_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
+
+if [ "$CURRENT_NODE_VERSION" -lt "$REQUIRED_NODE_VERSION" ]; then
+    echo -e "${YELLOW}⚠${NC}  Node.js v$CURRENT_NODE_VERSION detectado (requerido: v$REQUIRED_NODE_VERSION+)"
+    
+    # Verificar se NVM está disponível
+    if [ -s "$HOME/.nvm/nvm.sh" ]; then
+        echo "Atualizando Node.js via NVM..."
+        source "$HOME/.nvm/nvm.sh"
+        nvm install 22
+        nvm use 22
+        echo -e "${GREEN}✓${NC} Node.js atualizado para $(node -v)!"
+    else
+        echo -e "${RED}✗${NC} NVM não encontrado. Instale manualmente:"
+        echo "   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash"
+        echo "   source ~/.bashrc"
+        echo "   nvm install 22"
+        exit 1
+    fi
+else
+    echo -e "${GREEN}✓${NC} Node.js $(node -v) OK!"
+fi
+
+echo ""
+echo -e "${YELLOW}[2/6]${NC} Verificando atualizações no GitHub..."
 git fetch origin
 
 # Verificar se há atualizações
@@ -43,22 +71,22 @@ else
 fi
 
 echo ""
-echo -e "${YELLOW}[2/5]${NC} Baixando código atualizado..."
+echo -e "${YELLOW}[3/6]${NC} Baixando código atualizado..."
 git pull origin main
 echo -e "${GREEN}✓${NC} Código atualizado com sucesso!"
 
 echo ""
-echo -e "${YELLOW}[3/5]${NC} Instalando dependências..."
+echo -e "${YELLOW}[4/6]${NC} Instalando dependências..."
 pnpm install --prod=false
 echo -e "${GREEN}✓${NC} Dependências instaladas!"
 
 echo ""
-echo -e "${YELLOW}[4/5]${NC} Compilando projeto..."
+echo -e "${YELLOW}[5/6]${NC} Compilando projeto..."
 pnpm build
 echo -e "${GREEN}✓${NC} Projeto compilado!"
 
 echo ""
-echo -e "${YELLOW}[5/5]${NC} Reiniciando servidor..."
+echo -e "${YELLOW}[6/6]${NC} Reiniciando servidor..."
 
 # Detectar ambiente e reiniciar apropriadamente
 if command -v pm2 &> /dev/null; then

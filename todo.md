@@ -52,4 +52,11 @@
 - [x] Atualizar página API.tsx explicando requisitos de acesso
 - [x] Atualizar página APITester.tsx com aviso sobre credenciais
 - [x] Compilar projeto
+- [x] Publicar no GitHub
+
+## Adicionar Atualização do Node.js no update.sh
+
+- [x] Adicionar verificação de versão do Node.js
+- [x] Adicionar atualização automática via NVM (se disponível)
+- [x] Atualizar numeração das etapas (1/6 a 6/6)
 - [ ] Publicar no GitHub
